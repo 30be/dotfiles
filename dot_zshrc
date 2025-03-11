@@ -2,8 +2,8 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd notify
-bindkey -v
+setopt autocd extendedglob notify
+bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/lyka/.zshrc'
@@ -11,7 +11,18 @@ zstyle :compinstall filename '/home/lyka/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+
+alias ls='ls --color=auto'
+
 alias ls='ls --color=auto'
 alias l="ls -la"
-PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+
+# plugins=(git sublime zsh-syntax-highlighting)
 export EDITOR=nvim
+
+yay() {
+    command yay "$@"
+    pacman -Qe > ~/.packages
+}
