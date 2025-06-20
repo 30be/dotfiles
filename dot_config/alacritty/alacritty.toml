@@ -24,3 +24,5 @@ action = "ScrollPageDown"
 key = "J"
 mods = "Control|Shift"
 
+[terminal.shell]
+program = "/usr/bin/zsh"
