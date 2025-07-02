@@ -1,0 +1,11 @@
+[Unit]
+Description=Calls shutdown prompt script every 10 minutes from 21:00 to 04:00
+
+[Timer]
+OnCalendar=*-*-* 21,22,23,00,01,02,03:00,10,20,30,40,50:00
+AccuracySec=1min
+Persistent=false
+Unit=shutdown-prompt.service
+
+[Install]
+WantedBy=timers.target

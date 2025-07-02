@@ -1,0 +1,11 @@
+[Unit]
+Description=Run My Daily Script daily at 5 AM
+
+[Timer]
+OnCalendar=*-*-* 05:00:00
+Persistent=true
+
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

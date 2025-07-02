@@ -2,7 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd extendedglob notify
+setopt autocd extendedglob notify braceccl
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -18,10 +18,17 @@ alias ls='ls --color=auto'
 
 alias ls='ls --color=auto'
 alias l="ls -la"
-
-# plugins=(git sublime zsh-syntax-highlighting)
+gem() {
+  proxychains -q gemini -p "$@"
+}
+# function nvim() {
+#     proxychains4 /usr/bin/nvim "$@"
+# }
+PATH="$HOME/bin:$PATH"
+PATH="$HOME/.ghcup/bin:$PATH"
+# export PATH="$HOME/.local/bin:$PATH"
+plugins=(git sublime zsh-syntax-highlighting)
 export EDITOR=nvim
-
 yay() {
     command yay "$@"
     pacman -Qe > ~/.packages

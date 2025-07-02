@@ -1,0 +1,11 @@
+[Unit]
+Description=Capture a screenshot with timestamp
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c '/usr/bin/gnome-screenshot -p -f "/home/lyka/Pictures/Screenshots/$(date +%%Y-%%m-%%d_%%H-%%M-%%S).png"'
+User=lyka
+Group=lyka
+
+[Install]
+WantedBy=default.target
