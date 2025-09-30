@@ -38,3 +38,7 @@ chaddr() {
   sudo systemctl restart xray
 }
 shopt -s autocd
+ce() {
+  chezmoi add "$@"
+  chezmoi edit "$@" 
+}
