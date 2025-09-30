@@ -3,29 +3,8 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-# The following lines were added by compinstall (Bash equivalent uses bash-completion)
-# To get similar functionality, you typically install 'bash-completion' (e.g., 'sudo pacman -S bash-completion')
-# and source its script (often automatically done on modern Arch setups).
-# For now, we'll omit the explicit 'compinit' equivalent.
-
-# PS1: Bash prompt setup to approximate the zsh one:
-# %F{blue}%~ %(?.%F{green}.%F{red})%#%f
-# \[\033[34m\]: Blue color start
-# \w: Current working directory (like %~)
-# $(__prompt_exit_color): Function to set color based on last exit status
-# \$: Prompt symbol (# for root, $ for user)
-# \[\033[0m\]: Reset color
-__prompt_exit_color() {
-  if [ $? -eq 0 ]; then
-    echo -e "\[\033[32m\]" # Green for success
-  else
-    echo -e "\[\033[31m\]" # Red for failure
-  fi
-}
-PS1='\[\033[34m\]\w $(__prompt_exit_color)\$ \[\033[0m\]'
-
 alias ls='ls --color=auto'
-alias l="ls -la"
+alias l="ls -lha"
 
 # 'gem' function translated to bash
 gem() {
@@ -47,9 +26,15 @@ PATH="$HOME/.ghcup/bin:$PATH"
 # you'd typically install and source a separate script for bash.
 
 export EDITOR=nvim
+export PS1='\[\e[32m\]\W \$ \[\e[0m\]'
 
 # 'yay' function translated to bash
 yay() {
   command yay "$@"
   pacman -Qe >~/.packages
 }
+chaddr() {
+  sudoedit /usr/local/etc/xray/config.json
+  sudo systemctl restart xray
+}
+shopt -s autocd
