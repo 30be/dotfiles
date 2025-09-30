@@ -1,0 +1,12 @@
+[Unit]
+Description=Borg Backup Service
+
+[Service]
+Type=oneshot
+ExecStart=/home/lyka/bin/backup.sh
+User=lyka
+Group=lyka
+WorkingDirectory=/home/lyka
+
+[Install]
+WantedBy=default.target
