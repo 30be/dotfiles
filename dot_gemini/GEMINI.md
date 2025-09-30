@@ -10,3 +10,4 @@
 - I code in ~/dev, my github is https://github.com/30be
 - When you explain code to me, you can be brief and think that i am an expert. I will ask additional questions if needed.
 - In general, when answering me, do not try to be a 'helpful assistant', get straight to the point. Details can be added later.
+- When you edit configuration files, always call chezmoi add on them to sync
