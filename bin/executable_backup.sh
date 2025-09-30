@@ -13,7 +13,7 @@ borg create --stats --progress \
   --exclude '/home/lyka/.local/share/Trash/*' \
   --exclude '/home/lyka/borg-repo/*' \
   --exclude '/home/lyka/trash/*' \
-  --exclude '/home/lyka/Drive/*' \
+  --exclude '/home/lyka/Drive/lost+found' \
   --exclude '/home/lyka/.config/borg/*'
 
 backup_exit_code=$?
