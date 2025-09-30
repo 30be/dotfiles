@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/lyka/OBSIDIAN
+cd /home/lyka/Drive/OBSIDIAN
 git add -A && git commit -m "Hourly auto-commit $(date +%%Y-%%m-%%d_%%H:%%M)" && git push
 cd /home/lyka/books
 git add -A && git commit -m "Hourly auto-commit $(date +%%Y-%%m-%%d_%%H:%%M)" && git push
