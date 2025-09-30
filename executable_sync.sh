@@ -34,4 +34,3 @@ fi
 echo "Rsync synchronization finished at $(date)."
 
 exit $sync_exit_code
-
