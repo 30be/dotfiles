@@ -2,6 +2,7 @@
 
 # Set Borg repository path
 export BORG_REPO="/home/lyka/borg-repo"
+export BORG_PASSPHRASE="$(cat /home/lyka/.borg_passphrase)"
 
 # Create a new backup archive
 echo "Starting Borg backup at $(date)..."
@@ -10,8 +11,8 @@ borg create --stats --progress \
   /home/lyka \
   --exclude '/home/lyka/.cache/*' \
   --exclude '/home/lyka/.local/share/Trash/*' \
-  --exclude '/home/lyka/recup_dir.*' \
-  --exclude '/home/lyka/borg-repo/*'
+  --exclude '/home/lyka/borg-repo/*' \
+  --exclude '/home/lyka/trash/*'
 
 backup_exit_code=$?
 
