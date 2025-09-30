@@ -1,0 +1,9 @@
+# Exclude cache directories
+~/.cache
+/home/lyka/.cache
+
+# Exclude Trash
+~/.local/share/Trash
+
+# Exclude the backup repository itself
+/home/lyka/borg-repo
