@@ -1,0 +1,55 @@
+# Lines translated from zshrc
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+# The following lines were added by compinstall (Bash equivalent uses bash-completion)
+# To get similar functionality, you typically install 'bash-completion' (e.g., 'sudo pacman -S bash-completion')
+# and source its script (often automatically done on modern Arch setups).
+# For now, we'll omit the explicit 'compinit' equivalent.
+
+# PS1: Bash prompt setup to approximate the zsh one:
+# %F{blue}%~ %(?.%F{green}.%F{red})%#%f
+# \[\033[34m\]: Blue color start
+# \w: Current working directory (like %~)
+# $(__prompt_exit_color): Function to set color based on last exit status
+# \$: Prompt symbol (# for root, $ for user)
+# \[\033[0m\]: Reset color
+__prompt_exit_color() {
+  if [ $? -eq 0 ]; then
+    echo -e "\[\033[32m\]" # Green for success
+  else
+    echo -e "\[\033[31m\]" # Red for failure
+  fi
+}
+PS1='\[\033[34m\]\w $(__prompt_exit_color)\$ \[\033[0m\]'
+
+alias ls='ls --color=auto'
+alias l="ls -la"
+
+# 'gem' function translated to bash
+gem() {
+  proxychains -q gemini -p "$@"
+}
+
+# The commented-out 'nvim' function is kept commented out in bash.
+# function nvim() {
+#      proxychains4 /usr/bin/nvim "$@"
+# }
+
+PATH="$HOME/bin:$PATH"
+PATH="$HOME/.ghcup/bin:$PATH"
+# export PATH="$HOME/.local/bin:$PATH" # This line is already commented out
+
+# Bash doesn't use a 'plugins' array like Zsh frameworks (oh-my-zsh/prezto).
+# You'd load equivalent features (like git/syntax-highlighting) differently.
+# zsh-syntax-highlighting has no simple bash counterpart to include here,
+# you'd typically install and source a separate script for bash.
+
+export EDITOR=nvim
+
+# 'yay' function translated to bash
+yay() {
+  command yay "$@"
+  pacman -Qe >~/.packages
+}
