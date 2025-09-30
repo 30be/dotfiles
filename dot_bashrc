@@ -44,3 +44,4 @@ ce() {
   chezmoi edit "$@"
   chezmoi apply
 }
+alias tt='taskwarrior-tui'
