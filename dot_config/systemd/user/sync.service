@@ -1,0 +1,6 @@
+[Unit]
+Description=Run sync.sh script
+
+[Service]
+Type=oneshot
+ExecStart=/home/lyka/sync.sh
