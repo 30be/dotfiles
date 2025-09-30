@@ -18,7 +18,7 @@ gem() {
 
 PATH="$HOME/bin:$PATH"
 PATH="$HOME/.ghcup/bin:$PATH"
-# export PATH="$HOME/.local/bin:$PATH" # This line is already commented out
+PATH="$HOME/.local/bin:$PATH"
 
 # Bash doesn't use a 'plugins' array like Zsh frameworks (oh-my-zsh/prezto).
 # You'd load equivalent features (like git/syntax-highlighting) differently.
