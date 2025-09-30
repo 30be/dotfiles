@@ -25,4 +25,4 @@ key = "J"
 mods = "Control|Shift"
 
 [terminal.shell]
-program = "/usr/bin/zsh"
+program = "/usr/bin/bash"
