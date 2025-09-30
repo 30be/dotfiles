@@ -39,7 +39,8 @@ chaddr() {
 }
 shopt -s autocd
 ce() {
+  touch "$@"
   chezmoi add "$@"
-  chezmoi edit "$@" 
+  chezmoi edit "$@"
   chezmoi apply
 }
