@@ -101,6 +101,7 @@ gvfs-wsdd
 hmmer
 htop
 inkscape
+inotify-tools
 intel-media-driver
 intel-ucode
 intellij-idea-community-edition-bin
