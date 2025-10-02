@@ -6,5 +6,5 @@ vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGH
   .. "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 vim.opt.number = false
 
-vim.opt.spelllang = "en_us,ru,de"
+vim.opt.spelllang = "en_us,ru_ru,de"
 vim.opt.spell = true
