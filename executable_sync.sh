@@ -7,6 +7,8 @@ cd /home/lyka/books
 git add -A && git commit -m "Hourly auto-commit $(date +%Y-%m-%d_%H:%M)" && git push
 cd /home/lyka/.task
 git add -A && git commit -m "Hourly auto-commit $(date +%Y-%m-%d_%H:%M)" && git push
+cd /home/lyka/drafts
+git add -A && git commit -m "Hourly auto-commit $(date +%Y-%m-%d_%H:%M)" && git push
 
 # Update package list
 yay -Qqe >/home/lyka/pkglist.txt
