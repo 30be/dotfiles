@@ -11,6 +11,8 @@ To get fucking ready, I need to read the following:
 [AI EDU GOV RU](https://ai.edu.gov.ru/materials)
 [AI HSE](https://olymp.hse.ru/mmo/materials-it)
 
+https://cloud.mail.ru/public/hE4U/HjRxMbgLj
+
 <https://cses.fi/book/book.pdf>
 <https://www.mimuw.edu.pl/~idziaszek/algonotes/looking-for-a-challenge-2-en.pdf>
 <https://developers.google.com/machine-learning/crash-course/linear-regression#linear_regression_equation>
