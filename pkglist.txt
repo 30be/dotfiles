@@ -14,7 +14,7 @@ bat
 bitchat-tui
 blender
 borg
-brainworkshop
+brainworkshop-git
 btrfs-progs
 chezmoi
 chrome-remote-desktop
