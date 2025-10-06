@@ -45,3 +45,4 @@ ce() {
   chezmoi apply
 }
 alias tt='taskwarrior-tui'
+alias push="git add -A; git commit -m 'something'; git push"
