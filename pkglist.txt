@@ -204,6 +204,7 @@ testdisk
 timew
 tldr
 totem
+traceroute
 ttf-comic-neue
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
