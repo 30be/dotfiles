@@ -28,6 +28,7 @@ cups
 decibels
 direnv
 docker
+elan-lean
 electron38
 elm-bin
 epiphany
