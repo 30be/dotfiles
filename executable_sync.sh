@@ -35,4 +35,6 @@ fi
 
 echo "Rsync synchronization finished at $(date)."
 
+/home/lyka/bin/sync_heatmap.sh
+
 exit $sync_exit_code
