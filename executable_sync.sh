@@ -33,8 +33,9 @@ else
   echo "Rsync synchronization failed with exit code $sync_exit_code."
 fi
 
-echo "Rsync synchronization finished at $(date)."
-
 /home/lyka/bin/sync_heatmap.sh
+echo "Heatmap synchronization finished at $(date)."
+
+echo "Rsync synchronization finished at $(date)."
 
 exit $sync_exit_code
