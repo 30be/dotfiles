@@ -102,6 +102,7 @@ gvfs-smb
 gvfs-wsdd
 hmmer
 htop
+inetutils
 inkscape
 inotify-tools
 intel-media-driver
@@ -115,6 +116,7 @@ kitty
 kotlin
 lazygit
 lesspass
+lftp
 libpulse
 libreoffice-fresh
 libva-intel-driver
@@ -126,6 +128,7 @@ loupe
 luarocks
 malcontent
 man-db
+mariadb
 miniconda3
 mypy
 nano
