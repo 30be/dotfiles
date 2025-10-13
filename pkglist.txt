@@ -28,6 +28,7 @@ cups
 decibels
 direnv
 docker
+docker-compose
 elan-lean
 electron38
 elm-bin
