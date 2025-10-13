@@ -2,7 +2,7 @@
 Description=Run sync.sh every hour
 
 [Timer]
-OnCalendar=**:00
+OnCalendar=hourly
 Persistent=true
 
 [Install]
