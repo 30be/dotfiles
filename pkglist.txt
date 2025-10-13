@@ -38,6 +38,7 @@ exodus
 extension-manager
 fd
 feh
+ffuf
 firefox
 foot
 fzf
