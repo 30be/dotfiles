@@ -5,7 +5,7 @@
 local map = vim.keymap.set
 
 -- Map F5 to run ./run.sh in Alacritty and keep it open
-map("n", "<C-b>", function()
+map("n", "<F5>", function()
   vim.fn.system('alacritty -e bash -c "./run.sh; exec bash" &')
 end, { desc = "Run ./run.sh in Alacritty" })
 
