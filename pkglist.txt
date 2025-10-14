@@ -214,6 +214,7 @@ telegram-desktop
 testdisk
 timew
 tldr
+tlp
 totem
 traceroute
 tree
