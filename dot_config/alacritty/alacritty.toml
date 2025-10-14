@@ -26,3 +26,6 @@ mods = "Control|Shift"
 
 [terminal.shell]
 program = "/usr/bin/bash"
+
+[window]
+decorations = "none"
