@@ -87,6 +87,7 @@ gnuplot
 google-chrome
 google-gemini-cli
 gperf
+gradle
 grilo-plugins
 grub
 gst-plugin-pipewire
@@ -211,6 +212,7 @@ timew
 tldr
 totem
 traceroute
+tree
 ttf-comic-neue
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
