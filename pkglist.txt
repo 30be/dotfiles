@@ -1,4 +1,6 @@
 alacritty
+android-sdk
+android-sdk-build-tools
 android-sdk-platform-tools
 android-tools
 anki-bin
@@ -112,6 +114,7 @@ intel-media-driver
 intel-ucode
 intellij-idea-community-edition-bin
 iwd
+jdk17-openjdk
 jq
 jupyter-notebook
 jupyterlab
@@ -193,6 +196,7 @@ rust-analyzer
 rustup
 rygel
 samsung-unified-driver
+sdkmanager
 signal-desktop
 simple-scan
 sl
