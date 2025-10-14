@@ -48,3 +48,6 @@ alias tt='taskwarrior-tui'
 alias push="git add -A; git commit -m 'something'; git push"
 alias msg="notify-send -u critical"
 eval "$(direnv hook bash)"
+
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+mkdir -p $ANDROID_SDK_ROOT
