@@ -22,6 +22,7 @@ chezmoi
 chrome-remote-desktop
 clang
 claude-code
+clojure
 code
 cowsay
 cpulimit
