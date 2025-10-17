@@ -47,6 +47,7 @@ firefox
 foot
 fzf
 gdm
+gemini-cli-git
 ghcup-hs-bin
 ghostty
 gimp
@@ -88,7 +89,6 @@ gnome-weather
 gnu-netcat
 gnuplot
 google-chrome
-google-gemini-cli
 gperf
 gradle
 grilo-plugins
