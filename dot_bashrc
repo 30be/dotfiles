@@ -8,9 +8,11 @@ alias l="ls -lha"
 
 # 'gem' function translated to bash
 gem() {
-  proxychains -q gemini -p "$@"
+  proxychains -q gemini
 }
-
+flash() {
+  proxychains -q gemini -m "gemini-2.5-flash" "$@"
+}
 # The commented-out 'nvim' function is kept commented out in bash.
 # function nvim() {
 #      proxychains4 /usr/bin/nvim "$@"
@@ -49,5 +51,5 @@ alias push="git add -A; git commit -m 'something'; git push"
 alias msg="notify-send -u critical"
 eval "$(direnv hook bash)"
 
-export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-mkdir -p $ANDROID_SDK_ROOT
+export ANDROID_HOME=$HOME/Android/Sdk
+mkdir -p $ANDROID_HOME
