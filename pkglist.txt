@@ -35,6 +35,7 @@ docker-compose
 elan-lean
 electron38
 elm-bin
+emscripten
 emsdk
 epiphany
 evince
@@ -194,6 +195,7 @@ qt5-tools
 qt5-websockets
 qtask-git
 r
+rollup
 rsync
 ruff
 rust-analyzer
