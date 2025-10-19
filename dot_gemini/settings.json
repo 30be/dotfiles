@@ -1,8 +1,16 @@
 {
-  "selectedAuthType": "gemini-api-key",
-  "preferredEditor": "vim",
-  "theme": "GitHub",
-  "checkpointing": {
-    "enabled": true
+  "general": {
+    "checkpointing": {
+      "enabled": true
+    },
+    "preferredEditor": "vim"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "gemini-api-key"
+    }
+  },
+  "ui": {
+    "theme": "GitHub"
   }
 }
