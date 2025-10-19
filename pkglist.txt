@@ -91,6 +91,7 @@ gnuplot
 google-chrome
 gperf
 gradle
+graphviz
 grilo-plugins
 grub
 gst-plugin-pipewire
@@ -164,6 +165,7 @@ pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+plantuml
 plocate
 proxychains-ng
 pymol
