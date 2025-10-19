@@ -35,6 +35,7 @@ docker-compose
 elan-lean
 electron38
 elm-bin
+emsdk
 epiphany
 evince
 execstack
