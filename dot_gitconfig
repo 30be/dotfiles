@@ -9,3 +9,7 @@
 	name = Lykd
 [init]
 	defaultBranch = main
+[credential]
+	helper = store
+[pull]
+	ff = true
