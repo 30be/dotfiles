@@ -54,6 +54,6 @@ eval "$(direnv hook bash)"
 export ANDROID_HOME=$HOME/Android/Sdk
 mkdir -p $ANDROID_HOME
 ghcjs() { 
-  javascript-unknown-ghcjs-ghc -O2
+  javascript-unknown-ghcjs-ghc -O2 "$1"
   rm -rf "$1".jsexe "$1".o "$1".hi 
 }
