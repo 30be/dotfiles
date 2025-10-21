@@ -1,0 +1,11 @@
+background = #1b1c1d
+cursor-opacity = 1
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+background-opacity = 0.85
+# background-opacity-cells = true
+window-padding-x = 0
+window-padding-y = 0
+gtk-titlebar = false
+shell-integration-features = no-cursor,no-sudo,title,no-ssh-env,no-ssh-terminfo
