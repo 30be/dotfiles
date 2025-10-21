@@ -205,6 +205,7 @@ samsung-unified-driver
 sdkmanager
 signal-desktop
 simple-scan
+simplex-chat-bin
 sl
 smartmontools
 snapshot
@@ -219,6 +220,7 @@ tecla
 telegram-desktop
 testdisk
 timew
+timg
 tldr
 totem
 traceroute
