@@ -5,7 +5,7 @@ return {
     processor = "magick_cli",
     integrations = {
       markdown = {
-        enabled = false,
+        only_render_image_at_cursor = true,
       },
     },
   },
