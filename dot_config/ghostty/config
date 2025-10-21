@@ -9,3 +9,4 @@ window-padding-x = 0
 window-padding-y = 0
 gtk-titlebar = false
 shell-integration-features = no-cursor,no-sudo,title,no-ssh-env,no-ssh-terminfo
+window-inherit-working-directory = false
