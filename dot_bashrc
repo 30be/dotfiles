@@ -1,4 +1,7 @@
-# Lines translated from zshrc
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+  builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
+fi
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -53,7 +56,11 @@ eval "$(direnv hook bash)"
 
 export ANDROID_HOME=$HOME/Android/Sdk
 mkdir -p $ANDROID_HOME
-ghcjs() { 
+ghcjs() {
   javascript-unknown-ghcjs-ghc -O2 "$1"
-  rm -rf "$1".jsexe "$1".o "$1".hi 
+  rm -rf "$1".jsexe "$1".o "$1".hi
 }
+
+export TIMG_DEFAULT_TITLE="%b (%wx%h)"
+# image list. An alias to quickly list images; invoke with ils images/*
+alias ils='timg --grid=3x1 --upscale=i --center --title  -bgray -Bdarkgray 2> /dev/null'
