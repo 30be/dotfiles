@@ -55,6 +55,7 @@ alias msg="notify-send -u critical"
 eval "$(direnv hook bash)"
 
 export ANDROID_HOME=$HOME/Android/Sdk
+
 mkdir -p $ANDROID_HOME
 ghcjs() {
   javascript-unknown-ghcjs-ghc -O2 "$1"
