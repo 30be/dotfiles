@@ -37,6 +37,7 @@ electron38
 elm-bin
 emscripten
 emsdk
+entr
 epiphany
 evince
 execstack
@@ -259,6 +260,7 @@ yay
 yay-debug
 ydotool
 yelp
+youtube-dl
 zig
 zoom
 zram-generator
