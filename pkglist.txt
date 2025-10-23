@@ -41,7 +41,6 @@ epiphany
 espeak-ng
 evince
 execstack
-exodus
 extension-manager
 fd
 feh
@@ -258,7 +257,6 @@ xorg-xinit
 xray
 yarn
 yay
-yay-debug
 ydotool
 yelp
 youtube-dl
