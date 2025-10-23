@@ -39,6 +39,7 @@ emscripten
 emsdk
 entr
 epiphany
+espeak-ng
 evince
 execstack
 exodus
