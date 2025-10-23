@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 TEXT=$(pandoc -f commonmark -t plain --wrap=preserve | sed 's/---//g')
-echo $TEXT
+# echo $TEXT
 
 echo "$TEXT" | fold -w 180 | while read -r CHUNK; do
   ENCODED=$(echo "$CHUNK" | tr ' ' '+')
-  echo "$ENCODED"
+  echo "$ENCODED" >&2
 
   URL="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${ENCODED}"
   curl -sL -A "Mozilla/5.0" "$URL"
