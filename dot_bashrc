@@ -64,4 +64,29 @@ ghcjs() {
 
 export TIMG_DEFAULT_TITLE="%b (%wx%h)"
 # image list. An alias to quickly list images; invoke with ils images/*
-alias ils='timg --grid=3x1 --upscale=i --center --title  -bgray -Bdarkgray 2> /dev/null'
+alias ils='timg --grid=3x1 --upscale=i --center --title  -bgray -Bdarkgray'
+
+alias q='exit'
+
+alias v="$EDITOR"
+alias vi="$EDITOR"
+alias vim="$EDITOR"
+alias nvim="$EDITOR"
+alias vimdiff='nvim -d'
+
+mkcd() {
+  \mkdir -p "$1"
+  cd "$1"
+}
+
+tempe() {
+  cd "$(mktemp -d)"
+  chmod -R 0700 .
+  if [[ $# -eq 1 ]]; then
+    \mkdir -p "$1"
+    cd "$1"
+    chmod -R 0700 .
+  fi
+}
+
+alias rm="gio trash"
