@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+ENV_FILE=~/.env
+export $(grep '^GEMINI_API_KEY=' "$ENV_FILE" | head -n 1)
+
+: "${GEMINI_API_KEY:?Error: GEMINI_API_KEY not set. Check your ~/.env file.}"
+MODEL="gemini-2.5-flash"
+QUERY="${1:-}"
+STDIN_TEXT=$(if ! tty -s; then cat; else echo -n ""; fi)
+PROMPT=""
+
+[[ -n "$QUERY" ]] && PROMPT+="QUERY: ${QUERY}"
+[[ -n "$STDIN_TEXT" ]] && PROMPT+="${PROMPT:+\n}TEXT: ${STDIN_TEXT}"
+[[ -z "$PROMPT" ]] && {
+  echo "Error: No input provided." >&2
+  exit 1
+}
+
+RAW_RESPONSE=$(
+  proxychains -q curl -s "https://generativelanguage.googleapis.com/v1/models/${MODEL}:generateContent?key=${GEMINI_API_KEY}" \
+    -H 'Content-Type: application/json' \
+    -d "$(jq -n --arg p "$PROMPT" '{"contents":[{"parts":[{"text": $p}]}]}')"
+)
+
+RESPONSE_TEXT=$(echo "$RAW_RESPONSE" | jq -r '.candidates[0].content.parts[0].text // empty')
+
+echo "--------------------"
+echo "$RESPONSE_TEXT"
+echo "--------------------"

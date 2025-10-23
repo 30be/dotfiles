@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#!/bin/bash
+TEXT=$(pandoc -f commonmark -t plain --wrap=preserve | tr ' ' '+')
+URL="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${TEXT}"
+curl -sL -A "Mozilla/5.0" "$URL" | mpv --no-terminal --really-quiet -
+
+# https://evanhahn.com/use-text-to-speech-if-you-cant-proofread-aloud/

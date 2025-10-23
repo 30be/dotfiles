@@ -1,5 +1,4 @@
-#/bin/bash
-
+#!/bin/bash
 
 echo "Timer started."
 sleep 300
