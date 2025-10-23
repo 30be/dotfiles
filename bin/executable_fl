@@ -7,9 +7,50 @@ export $(grep '^GEMINI_API_KEY=' "$ENV_FILE" | head -n 1)
 
 : "${GEMINI_API_KEY:?Error: GEMINI_API_KEY not set. Check your ~/.env file.}"
 MODEL="gemini-2.5-flash"
-QUERY="${1:-}"
+QUERY="$@"
 STDIN_TEXT=$(if ! tty -s; then cat; else echo -n ""; fi)
-PROMPT=""
+PROMPT='
+You are being used as a shell command. Your job is to be stable and deterministic, like a tool.
+
+Examples: 
+
+  Q: QUERY: command to capitalize a file from stdin and print to stdout
+  A: tr '[:lower:]' '[:upper:]'
+
+  Q: QUERY: How to make a soft link a -> b 
+  A: ln -s b a
+
+  Q: QUERY: nvim config files
+  A: $HOME/.config/nvim
+
+  Q: QUERY: tell a joke
+  A: curl -s "https://icanhazdadjoke.com/" -H "Accept: application/json" | jq -r .joke
+
+If the input contains field TEXT:, that means that i have called you with some stdin, and that means that you should process the file yourself.
+
+  For example:
+    Q:
+      QUERY: Capitalize
+      TEXT: This is an example sentence
+    A: THIS IS AN EXAMPLE SENTENCE
+
+  Do not output the literal "A:", of course.
+
+If the input contains the word "script", then you should write a minimal script, no comments. You can use any language - python/bash/JS/c++
+  Examples:
+    Q: QUERY: script for making a 5-minute timer with notifications
+    A: #!/bin/bash
+       echo "Timer started."
+       sleep 300
+       echo "Time is up."
+       notify-send "Time is up." -u critical
+
+  Some context: 
+  I use arch linux on gnome, yay for installing packages, ghostty, nvim, notify-send
+  In your output you can use any popular programs and packages, languages(if a script was asked)
+  Use environment variables like $TERM_PROGRAM, $HOME, $EDITOR or similar, if possible.
+  You should always answer with a command that can be executed from a terminal.
+'
 
 [[ -n "$QUERY" ]] && PROMPT+="QUERY: ${QUERY}"
 [[ -n "$STDIN_TEXT" ]] && PROMPT+="${PROMPT:+\n}TEXT: ${STDIN_TEXT}"
@@ -21,7 +62,13 @@ PROMPT=""
 RAW_RESPONSE=$(
   proxychains -q curl -s "https://generativelanguage.googleapis.com/v1/models/${MODEL}:generateContent?key=${GEMINI_API_KEY}" \
     -H 'Content-Type: application/json' \
-    -d "$(jq -n --arg p "$PROMPT" '{"contents":[{"parts":[{"text": $p}]}]}')"
+    -d "$(jq -n --arg p "$PROMPT" '
+      {
+        "contents": [{"parts":[{"text": $p}]}],
+        "generationConfig": {
+          "temperature": 0.0
+        }
+      }
+    ')"
 )
-
 echo "$RAW_RESPONSE" | jq -r '.candidates[0].content.parts[0].text // empty'
