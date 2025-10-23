@@ -26,7 +26,6 @@ clojure
 code
 cowsay
 cpulimit
-cuda
 cups
 decibels
 direnv
@@ -118,7 +117,6 @@ inkscape
 inotify-tools
 intel-media-driver
 intel-ucode
-intellij-idea-community-edition-bin
 iwd
 jdk17-openjdk
 jq
@@ -142,6 +140,7 @@ malcontent
 man-db
 mariadb
 miniconda3
+mpv
 mypy
 nano
 nautilus
