@@ -3,7 +3,10 @@
     "checkpointing": {
       "enabled": true
     },
-    "preferredEditor": "vim"
+    "preferredEditor": "nvim",
+    "disableAutoUpdate": true,
+    "vimMode": true,
+    "disableUpdateNag": true
   },
   "security": {
     "auth": {
