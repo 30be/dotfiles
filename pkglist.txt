@@ -176,6 +176,7 @@ pypy
 pyright
 python-biopython
 python-ebooklib
+python-google-genai
 python-httplib2
 python-matplotlib
 python-numpy
