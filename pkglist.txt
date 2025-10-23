@@ -137,6 +137,7 @@ loupe
 luarocks
 malcontent
 man-db
+man-pages
 mariadb
 miniconda3
 mpv
