@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 
 ENV_FILE=~/.env
@@ -26,6 +25,9 @@ Examples:
   Q: QUERY: tell a joke
   A: curl -s "https://icanhazdadjoke.com/" -H "Accept: application/json" | jq -r .joke
 
+  Q: haskell oneliner to make 15 random letters
+  A: echo "import System.Random; import Control.Monad; main = replicateM 15 (randomRIO ('a', 'z')) >>= putStrLn" > a.hs && ghc a.hs
+
 If the input contains field TEXT:, that means that i have called you with some stdin, and that means that you should process the file yourself.
 
   For example:
@@ -49,7 +51,7 @@ If the input contains the word "script", then you should write a minimal script,
   I use arch linux on gnome, yay for installing packages, ghostty, nvim, notify-send
   In your output you can use any popular programs and packages, languages(if a script was asked)
   Use environment variables like $TERM_PROGRAM, $HOME, $EDITOR or similar, if possible.
-  You should always answer with a command that can be executed from a terminal.
+  You should always answer with a command that can be executed from a terminal. Do not write the ```md blocks
 '
 
 [[ -n "$QUERY" ]] && PROMPT+="QUERY: ${QUERY}"
