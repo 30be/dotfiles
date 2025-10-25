@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-mail -s "From $(hostname)" sofluka98@gmail.com $@
+mail -s "From $(hostname)" $@ sofluka98@gmail.com
