@@ -14,3 +14,4 @@
 - When you edit configuration files, always call chezmoi add on them to sync
 - After file creation, try to test/launch it, if you think that if that will take less than 5 seconds
 - If you encounter problems, and cant resolve them in more than a couple iterations/searches, ask ME! Just stop execution and ask me, I can resolve complex problems.
+- NEVER use LaTex. You can use any unicode though.
