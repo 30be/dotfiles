@@ -47,7 +47,10 @@ If the input contains "-s", then you should write a minimal script, no comments.
        echo "Time is up."
        notify-send "Time is up." -u critical
 
-If the 
+If the input contains "-t", then you should output plain text, and no command
+  Examples:
+    Q: QUERY: -t tell a joke
+    A: Why did the chicken cross the road? To get to the other side!
 
   Some context: 
   I use arch linux on gnome, yay for installing packages, ghostty, nvim, notify-send
