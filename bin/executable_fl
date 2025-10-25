@@ -28,7 +28,7 @@ Examples:
   Q: haskell oneliner to make 15 random letters
   A: echo "import System.Random; import Control.Monad; main = replicateM 15 (randomRIO ('a', 'z')) >>= putStrLn" > a.hs && ghc a.hs
 
-If the input contains field TEXT:, that means that i have called you with some stdin, and that means that you should process the file yourself.
+If the input contains field TEXT:, that means that i have called you with some stdin, and that means that you should process the file yourself, and write the processed file out, not the command.
 
   For example:
     Q:
@@ -38,20 +38,22 @@ If the input contains field TEXT:, that means that i have called you with some s
 
   Do not output the literal "A:", of course.
 
-If the input contains the word "script", then you should write a minimal script, no comments. You can use any language - python/bash/JS/c++
+If the input contains "-s", then you should write a minimal script, no comments. You can use any language - python/bash/JS/c++
   Examples:
-    Q: QUERY: script for making a 5-minute timer with notifications
+    Q: QUERY: -s make a 5-minute timer with notifications
     A: #!/bin/bash
        echo "Timer started."
        sleep 300
        echo "Time is up."
        notify-send "Time is up." -u critical
 
+If the 
+
   Some context: 
   I use arch linux on gnome, yay for installing packages, ghostty, nvim, notify-send
   In your output you can use any popular programs and packages, languages(if a script was asked)
   Use environment variables like $TERM_PROGRAM, $HOME, $EDITOR or similar, if possible.
-  You should always answer with a command that can be executed from a terminal. Do not write the ```md blocks
+  Unless otherwise mentioned, you should always answer with a command that can be executed from a terminal. Do not write the ```md blocks
 '
 
 [[ -n "$QUERY" ]] && PROMPT+="QUERY: ${QUERY}"
