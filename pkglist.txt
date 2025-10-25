@@ -212,6 +212,7 @@ sl
 smartmontools
 snapshot
 speedscope
+spotdl
 spotify-launcher
 sushi
 sxiv
