@@ -92,3 +92,4 @@ tempe() {
 }
 
 alias rm="gio trash"
+alias g=git
