@@ -141,6 +141,7 @@ man-pages
 mariadb
 miniconda3
 mpv
+msmtp
 mypy
 nano
 nautilus
@@ -203,6 +204,7 @@ ruff
 rust-analyzer
 rustup
 rygel
+s-nail
 samsung-unified-driver
 sdkmanager
 signal-desktop
