@@ -26,4 +26,6 @@ chmod u+x "$TARGET"
 if cmp -s <(echo "$CONTENT") "$TARGET"; then
   echo "File unchanged."
   rm -f "$TARGET"
+else
+  chezmoi add "$TARGET"
 fi
