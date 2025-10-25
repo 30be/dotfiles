@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+COMMIT_MESSAGE=$(git diff HEAD | fl -t write a commit message for this git diff, like \"Add tests for feature X\")
+echo "Commit message: $COMMIT_MESSAGE"
+git add -A
+git commit -m "$COMMIT_MESSAGE"
+git push
