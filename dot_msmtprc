@@ -1,0 +1,9 @@
+account default
+host smtp.zoho.com
+port 465
+from ls4@shoggothstaring.com
+auth on
+tls on
+tls_starttls off
+user ls4@shoggothstaring.com
+passwordeval "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.msmtp-password.gpg"
