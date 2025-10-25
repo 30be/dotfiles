@@ -1,0 +1,16 @@
+{
+  "Focusmate record": {
+    "prefix": "focusmate",
+    "body": [
+      "",
+      "---",
+      "DATE          : $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE",
+      "PARTNER       : $1",
+      "MY_GOAL       : $2",
+      "THEIR_GOAL    : $3",
+      "MY_PROGRESS   : $4",
+      "THEIR_PROGRESS: $5"
+    ],
+    "description": "Inserts a custom focusmate record template"
+  }
+}
