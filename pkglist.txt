@@ -117,6 +117,8 @@ inotify-tools
 intel-media-driver
 intel-ucode
 iwd
+jami-daemon
+jami-qt
 jdk17-openjdk
 jq
 jupyter-notebook
@@ -207,9 +209,7 @@ rygel
 s-nail
 samsung-unified-driver
 sdkmanager
-signal-desktop
 simple-scan
-simplex-chat-bin
 sl
 smartmontools
 snapshot
