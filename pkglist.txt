@@ -33,6 +33,7 @@ docker
 docker-compose
 elan-lean
 electron38
+element-desktop
 elm-bin
 emscripten
 emsdk
