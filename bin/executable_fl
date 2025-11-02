@@ -37,7 +37,6 @@ If the input contains field TEXT:, that means that i have called you with some s
     A: THIS IS AN EXAMPLE SENTENCE
 
   Do not output the literal "A:", of course.
-  Important: DO NOT WRITE THE COMMAND IN THIS CASE. YOU SHOULD OUTPUT THE RESULTING TEXT!!!
 
 If the input contains "-s", then you should write a minimal script, no comments. You can use any language - python/bash/JS/c++
   Examples:
