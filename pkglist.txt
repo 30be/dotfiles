@@ -257,6 +257,7 @@ wtype
 xdg-desktop-portal-gnome
 xdg-user-dirs-gtk
 xdg-utils
+xonsh
 xorg-server
 xorg-xinit
 xray
