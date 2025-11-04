@@ -8,6 +8,7 @@ arduino-ide
 arduino-language-server
 at
 audacity
+babashka-bin
 baobab
 base
 base-devel
@@ -202,6 +203,7 @@ qt5-tools
 qt5-websockets
 qtask-git
 r
+rlwrap
 rollup
 rsync
 ruff
