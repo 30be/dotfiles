@@ -27,6 +27,7 @@ code
 cowsay
 cpulimit
 cups
+dash
 decibels
 direnv
 docker
