@@ -166,6 +166,7 @@ opencl-headers
 openvpn
 orca
 paru
+pass
 patchutils
 pavucontrol
 pdfgrep
