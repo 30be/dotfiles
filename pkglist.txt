@@ -31,6 +31,7 @@ cpulimit
 cronie
 cups
 dash
+debtap
 decibels
 direnv
 docker
@@ -116,6 +117,7 @@ gvfs-smb
 gvfs-wsdd
 hmmer
 htop
+idriveforlinux
 inetutils
 inkscape
 inotify-tools
@@ -207,6 +209,7 @@ qt5-tools
 qt5-websockets
 qtask-git
 r
+rclone
 rlwrap
 rollup
 rsync
