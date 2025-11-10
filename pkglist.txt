@@ -178,6 +178,7 @@ pipewire-jack
 pipewire-pulse
 plantuml
 plocate
+podman
 proxychains-ng
 pymol
 pypy
