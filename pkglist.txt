@@ -28,6 +28,7 @@ clojure
 code
 cowsay
 cpulimit
+cronie
 cups
 dash
 decibels
