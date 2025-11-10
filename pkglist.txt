@@ -218,11 +218,13 @@ samsung-unified-driver
 sdkmanager
 simple-scan
 sl
+slirp4netns
 smartmontools
 snapshot
 speedscope
 spotdl
 spotify-launcher
+strace
 sushi
 sxiv
 task
@@ -267,6 +269,7 @@ xonsh
 xorg-server
 xorg-xinit
 xray
+yandex-music
 yarn
 yay
 ydotool
