@@ -35,6 +35,8 @@ Do not overwrite any files without backing them up first. Do not run any destruc
 
 Do not check, for example ls -la - if previous agent made some file that means it still exists
 
+Do not repeat yourself.
+
 Note that every command you send should be complete and correct, and do not require any input from the user.
 
 Note: Requests can be multiline, like that:
