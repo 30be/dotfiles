@@ -101,6 +101,7 @@ gperf
 gradle
 graphviz
 grilo-plugins
+gromit-mpx
 grub
 gst-plugin-pipewire
 gtk2
