@@ -1,6 +1,4 @@
-return {}
-
--- return {
---   "GCBallesteros/jupytext.nvim",
---   config = true,
--- }
+return {
+  "GCBallesteros/jupytext.nvim",
+  config = true,
+}

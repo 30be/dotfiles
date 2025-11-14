@@ -8,3 +8,5 @@ vim.opt.number = false
 
 vim.opt.spelllang = "en_us,ru_ru,de_de"
 vim.opt.spell = true
+
+vim.g.python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
