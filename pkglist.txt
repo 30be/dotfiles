@@ -191,6 +191,7 @@ python-biopython
 python-ebooklib
 python-google-genai
 python-httplib2
+python-jupytext
 python-matplotlib
 python-numpy
 python-openpyxl
