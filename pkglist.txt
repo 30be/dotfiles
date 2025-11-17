@@ -52,6 +52,7 @@ fd
 feh
 ffuf
 firefox
+firefox-gnome-theme
 foot
 fzf
 gdm
