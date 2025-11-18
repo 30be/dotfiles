@@ -155,6 +155,7 @@ mpv
 msmtp
 mypy
 nano
+nasm
 nautilus
 neovim
 network-manager-applet
