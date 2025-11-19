@@ -56,7 +56,7 @@ firefox-gnome-theme
 foot
 fzf
 gdm
-gemini-cli-git
+gemini-cli
 ghcup-hs-bin
 ghostty
 gimp
