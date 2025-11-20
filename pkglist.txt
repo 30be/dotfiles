@@ -242,6 +242,7 @@ taskwarrior-tui
 tecla
 telegram-desktop
 testdisk
+texlive-basic
 timew
 timg
 tldr
