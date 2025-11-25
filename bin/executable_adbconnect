@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SUBNET="192.168.0."
+TIMEOUT_SECONDS="3"
+
+for i in {1..254}; do
+  IP="${SUBNET}${i}"
+  timeout "${TIMEOUT_SECONDS}s" adb connect "${IP}" 2>/dev/null &
+done
+
+wait
+echo "Scan finished. Check connected devices: adb devices"
