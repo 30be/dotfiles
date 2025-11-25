@@ -225,6 +225,7 @@ rustup
 rygel
 s-nail
 samsung-unified-driver
+scrcpy
 sdkmanager
 simple-scan
 sl
