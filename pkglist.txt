@@ -163,7 +163,7 @@ network-manager-applet
 networkmanager
 nix
 nmap
-nodejs-lts-iron
+nodejs-lts-jod
 noto-fonts
 noto-fonts-cjk
 npm
@@ -216,6 +216,7 @@ qt5-websockets
 qtask-git
 r
 rclone
+reflector
 rlwrap
 rollup
 rsync
