@@ -152,6 +152,7 @@ man-db
 man-pages
 mariadb
 miniconda3
+mosh
 mpv
 msmtp
 mypy
