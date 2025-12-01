@@ -202,6 +202,7 @@ python-openpyxl
 python-pandas
 python-pipenv
 python-playsound
+python-poetry
 python-pyjwt
 python-scikit-learn
 python-seaborn
