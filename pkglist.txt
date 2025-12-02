@@ -4,11 +4,9 @@ android-sdk-build-tools
 android-sdk-platform-tools
 android-tools
 anki-bin
-arduino-ide
 arduino-language-server
 at
 audacity
-babashka-bin
 baobab
 base
 base-devel
@@ -18,12 +16,9 @@ bind
 bitchat-tui
 blender
 borg
-brainworkshop-git
 btrfs-progs
 chezmoi
-chrome-remote-desktop
 clang
-claude-code
 clojure
 code
 cowsay
@@ -41,7 +36,6 @@ electron38
 element-desktop
 elm-bin
 emscripten
-emsdk
 entr
 epiphany
 espeak-ng
@@ -192,8 +186,6 @@ pymol
 pypy
 pyright
 python-biopython
-python-ebooklib
-python-google-genai
 python-httplib2
 python-jupyterlab-vim
 python-jupytext
@@ -215,13 +207,11 @@ qemu-full
 qt5-networkauth
 qt5-script
 qt5-tools
-qt5-websockets
 qtask-git
 r
 rclone
 reflector
 rlwrap
-rollup
 rsync
 ruff
 rust-analyzer
@@ -236,8 +226,6 @@ sl
 slirp4netns
 smartmontools
 snapshot
-speedscope
-spotdl
 spotify-launcher
 strace
 sushi
@@ -285,7 +273,6 @@ xonsh
 xorg-server
 xorg-xinit
 xray
-yandex-music
 yarn
 yay
 ydotool
