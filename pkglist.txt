@@ -31,6 +31,7 @@ decibels
 direnv
 docker
 docker-compose
+dumbpipe-bin
 elan-lean
 electron38
 element-desktop
