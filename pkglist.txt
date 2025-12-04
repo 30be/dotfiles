@@ -222,6 +222,7 @@ s-nail
 samsung-unified-driver
 scrcpy
 sdkmanager
+signal-desktop
 simple-scan
 sl
 slirp4netns
