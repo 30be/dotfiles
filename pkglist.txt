@@ -262,6 +262,7 @@ vulkan-intel
 vulkan-memory-allocator
 vulkan-validation-layers
 webapp-manager
+wezterm
 wget
 wine
 wireless_tools
