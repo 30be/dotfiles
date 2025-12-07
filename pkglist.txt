@@ -242,6 +242,7 @@ texlive-basic
 timew
 timg
 tldr
+tmux
 totem
 traceroute
 tree
