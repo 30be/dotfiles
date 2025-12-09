@@ -133,7 +133,6 @@ kotlin
 lazygit
 lesspass
 lftp
-libpam-google-authenticator
 libpulse
 libreoffice-fresh
 libva-intel-driver
@@ -165,12 +164,14 @@ noto-fonts
 noto-fonts-cjk
 npm
 ntfs-3g
+oath-toolkit
 obsidian
 opencl-headers
 openvpn
 orca
 paru
 pass
+pass-otp-git
 patchutils
 pavucontrol
 pdfgrep
