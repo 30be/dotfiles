@@ -133,6 +133,7 @@ kotlin
 lazygit
 lesspass
 lftp
+libpam-google-authenticator
 libpulse
 libreoffice-fresh
 libva-intel-driver
@@ -239,6 +240,9 @@ tecla
 telegram-desktop
 testdisk
 texlive-basic
+texlive-latex
+texlive-latexextra
+texlive-plaingeneric
 timew
 timg
 tldr
