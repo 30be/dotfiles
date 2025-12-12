@@ -259,6 +259,7 @@ ufw
 ugene-bin
 undollar
 uv
+v2rayn
 vim
 vivaldi
 vlc
