@@ -1,4 +1,5 @@
 alacritty
+amneziavpn-bin
 android-sdk
 android-sdk-build-tools
 android-sdk-platform-tools
@@ -115,6 +116,7 @@ gvfs-smb
 gvfs-wsdd
 hmmer
 htop
+hysteria
 idriveforlinux
 inetutils
 inkscape
