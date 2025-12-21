@@ -240,6 +240,8 @@ task
 tasksh
 taskwarrior-tui
 tecla
+telegram-cli-git
+telegram-cli-git-debug
 telegram-desktop
 testdisk
 texlive-basic
