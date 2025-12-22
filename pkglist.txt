@@ -152,6 +152,7 @@ miniconda3
 mosh
 mpv
 msmtp
+mtr
 mypy
 nano
 nasm
