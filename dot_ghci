@@ -1,0 +1,4 @@
+:set -XOverloadedStrings
+:set -package bytestring
+import qualified Data.ByteString as BS
+import qualified Data.ByteString.Char8 as BC8
