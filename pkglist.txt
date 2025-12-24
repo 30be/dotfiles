@@ -229,6 +229,7 @@ scrcpy
 sdkmanager
 signal-desktop
 simple-scan
+simplex-chat-bin
 sl
 slirp4netns
 smartmontools
