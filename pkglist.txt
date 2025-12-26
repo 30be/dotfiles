@@ -76,6 +76,7 @@ gnome-logs
 gnome-maps
 gnome-menus
 gnome-music
+gnome-network-displays
 gnome-remote-desktop
 gnome-screenshot
 gnome-session
