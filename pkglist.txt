@@ -1,3 +1,5 @@
+adobe-source-han-sans-jp-fonts
+adobe-source-han-serif-jp-fonts
 alacritty
 amneziavpn-bin
 android-sdk
@@ -279,6 +281,7 @@ webapp-manager
 wezterm
 wget
 wine
+winetricks
 wireless_tools
 wireplumber
 wl-clipboard
