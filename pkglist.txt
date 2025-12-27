@@ -195,6 +195,7 @@ pymol
 pypy
 pyright
 python-biopython
+python-google-genai
 python-httplib2
 python-jupyterlab-vim
 python-jupytext
