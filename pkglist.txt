@@ -239,6 +239,7 @@ slirp4netns
 smartmontools
 snapshot
 spotify-launcher
+sqlfluff
 strace
 sushi
 sxiv
