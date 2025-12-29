@@ -1,0 +1,25 @@
+{
+  "Competitive HaSkell": {
+    "prefix": "chs",
+    "body": [
+      "{-# LANGUAGE FlexibleInstances #-",
+      "{-# LANGUAGE ImportQualifiedPost #-",
+      "{-# LANGUAGE OverloadedStrings #-",
+      "{-# LANGUAGE RecordWildCards #-",
+      "{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}",
+      "",
+      "{-# HLINT ignore \"Unused LANGUAGE pragma\" #-}",
+      "",
+      "module Main where",
+      "",
+      "import Data.ByteString.Lazy.Char8 qualified as BS",
+      "",
+      "solve :: BS.ByteString -> BS.ByteString",
+      "solve = $0",
+      "",
+      "main :: IO ()",
+      "main = BS.putStr . solve =<< BS.getContents"
+    ],
+    "description": "Competitive HaSkell"
+  }
+}
