@@ -1,5 +1,5 @@
 {
-  "Competitive HaSkell": {
+  "Competitive Haskell": {
     "prefix": "chs",
     "body": [
       "{-# LANGUAGE FlexibleInstances #-",
@@ -18,8 +18,8 @@
       "solve = $0",
       "",
       "main :: IO ()",
-      "main = BS.putStr . solve =<< BS.getContents"
+      "main = BS.interact solve"
     ],
-    "description": "Competitive HaSkell"
+    "description": "Competitive Haskell"
   }
 }
