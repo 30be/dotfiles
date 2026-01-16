@@ -190,6 +190,7 @@ pipewire-pulse
 plantuml
 plocate
 podman
+postgresql
 proxychains-ng
 pymol
 pypy
