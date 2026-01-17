@@ -20,6 +20,7 @@ bitchat-tui
 blender
 borg
 btrfs-progs
+catt
 chezmoi
 clang
 clojure
@@ -152,6 +153,7 @@ man-db
 man-pages
 mariadb
 miniconda3
+mkchromecast-git
 mosh
 mpv
 msmtp
