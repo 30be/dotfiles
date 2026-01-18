@@ -147,6 +147,7 @@ man-pages
 mariadb
 mkchromecast-git
 mosh
+mpv
 msmtp
 mtr
 mypy
