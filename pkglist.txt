@@ -6,6 +6,7 @@ android-sdk
 android-sdk-build-tools
 android-tools
 anki-bin
+anydesk-bin
 arduino-language-server
 at
 audacity
