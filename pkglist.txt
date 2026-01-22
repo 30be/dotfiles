@@ -200,6 +200,7 @@ python-poetry
 python-pyjwt
 python-scikit-learn
 python-seaborn
+python-selenium
 python-tqdm
 python-yaml
 python311
