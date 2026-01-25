@@ -19,6 +19,7 @@ bind
 bitchat-tui
 borg
 btrfs-progs
+bun
 catt
 chezmoi
 clang
@@ -202,6 +203,7 @@ python-scikit-learn
 python-seaborn
 python-selenium
 python-tqdm
+python-xlsx2csv
 python-yaml
 python311
 qbittorrent
