@@ -166,6 +166,7 @@ noto-fonts
 noto-fonts-cjk
 npm
 ntfs-3g
+nushell
 oath-toolkit
 opencl-headers
 openvpn
