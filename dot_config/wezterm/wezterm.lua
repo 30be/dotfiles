@@ -9,11 +9,18 @@ config.window_padding = {
 	bottom = "0",
 }
 config.window_decorations = "RESIZE"
-config.default_prog = { "bash" }
+config.default_prog = { "nu" }
 config.color_scheme = "Dracula (Official)"
+-- Disable copy on select
+config.mouse_bindings = {
+	{
+		event = { Up = { streak = 1, button = "Left", mods = "NONE" } },
+		action = wezterm.action.Nop,
+	},
+}
 
 local function is_shell(foreground_process_name)
-	local shell_names = { "bash", "zsh", "fish", "sh", "ksh", "dash" }
+	local shell_names = { "bash", "zsh", "fish", "sh", "ksh", "dash", "nu", "nushell" }
 	local process = string.match(foreground_process_name, "[^/\\]+$") or foreground_process_name
 	for _, shell in ipairs(shell_names) do
 		if process == shell then
