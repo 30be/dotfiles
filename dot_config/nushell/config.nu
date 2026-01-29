@@ -5,10 +5,12 @@ $env.config = {
 }
 $env.PROMPT_COMMAND_RIGHT = { "" }
 
+
 # From bash
 #
 $env.config.edit_mode = 'vi'
 $env.config.show_banner = false
+$env.config.rm.always_trash = true
 
 # Aliases
 alias vi = nvim
@@ -23,11 +25,6 @@ alias runhs = runhaskell --ghc-arg="-package containers" --ghc-arg="-package byt
 # Functions
 def gem [...args] { proxychains -q gemini -m "gemini-3-pro-preview" ...$args }
 def flash [...args] { proxychains -q gemini -m "gemini-3-flash" ...$args }
-
-def --env yay [...args] {
-    ^yay ...$args
-    pacman -Qe | save -f ~/.packages
-}
 
 def chaddr [] {
     sudoedit /usr/local/etc/xray/config.json
