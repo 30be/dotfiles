@@ -211,7 +211,6 @@ qbittorrent
 qt5-networkauth
 qt5-script
 qt5-tools
-qtask-git
 r
 rclone
 reflector
@@ -235,9 +234,6 @@ sqlfluff
 strace
 sushi
 sxiv
-task
-tasksh
-taskwarrior-tui
 tecla
 telegram-cli-git-debug
 telegram-desktop
