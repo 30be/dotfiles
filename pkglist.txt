@@ -35,6 +35,7 @@ decibels
 direnv
 docker
 docker-compose
+droidcam
 dumbpipe-bin
 elan-lean
 electron38
@@ -139,6 +140,7 @@ libreoffice-fresh
 libva-intel-driver
 linux
 linux-firmware
+linux-headers
 lld
 logkeys
 loupe
