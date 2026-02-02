@@ -198,6 +198,7 @@ python-matplotlib
 python-numpy
 python-openpyxl
 python-pandas
+python-pdf2docx
 python-pipenv
 python-playsound
 python-poetry
