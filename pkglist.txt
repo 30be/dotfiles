@@ -259,6 +259,7 @@ ufw
 ugene-bin
 undollar
 uv
+uvicorn
 vim
 vlc
 vlc-plugins-all
