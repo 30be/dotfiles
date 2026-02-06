@@ -185,6 +185,7 @@ plantuml
 plocate
 podman
 postgresql
+prettier
 proxychains-ng
 pymol
 pypy
