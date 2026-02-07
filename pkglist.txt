@@ -186,6 +186,7 @@ plocate
 podman
 postgresql
 prettier
+proton-vpn-gtk-app
 proxychains-ng
 pymol
 pypy
