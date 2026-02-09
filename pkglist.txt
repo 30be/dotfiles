@@ -1,3 +1,4 @@
+7zip
 adobe-source-han-sans-jp-fonts
 adobe-source-han-serif-jp-fonts
 aichat
