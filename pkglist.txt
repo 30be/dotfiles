@@ -220,6 +220,7 @@ qt5-networkauth
 qt5-script
 qt5-tools
 r
+rar
 rclone
 reflector
 rlwrap
