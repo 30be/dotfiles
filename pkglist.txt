@@ -1,5 +1,6 @@
 adobe-source-han-sans-jp-fonts
 adobe-source-han-serif-jp-fonts
+aichat
 alacritty
 amneziavpn-bin
 android-sdk
@@ -150,6 +151,7 @@ man-db
 man-pages
 mariadb
 mkchromecast-git
+moreutils
 mosh
 mpv
 msmtp
