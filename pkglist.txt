@@ -103,6 +103,7 @@ google-chrome
 gperf
 grilo-plugins
 grim
+grok-cli
 gromit-mpx
 grub
 gst-plugin-pipewire
