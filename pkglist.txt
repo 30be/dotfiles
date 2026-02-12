@@ -245,6 +245,7 @@ sqlfluff
 strace
 sushi
 sxiv
+tailwindcss
 tecla
 telegram-cli-git-debug
 telegram-desktop
