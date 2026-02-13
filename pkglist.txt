@@ -213,6 +213,7 @@ python-pyjwt
 python-scikit-learn
 python-seaborn
 python-selenium
+python-sqlalchemy
 python-tqdm
 python-xlsx2csv
 python-yaml
