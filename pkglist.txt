@@ -138,6 +138,7 @@ jupyterlab
 lazygit
 lesspass
 lftp
+libkeybinder3
 libpulse
 libreoffice-fresh
 libva-intel-driver
