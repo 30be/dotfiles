@@ -27,6 +27,7 @@ chezmoi
 clang
 clojure
 code
+copyparty
 cowsay
 cpulimit
 cronie
