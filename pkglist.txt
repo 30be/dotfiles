@@ -177,6 +177,7 @@ ntfs-3g
 nushell
 oath-toolkit
 opencl-headers
+opencode
 openresolv
 openvpn
 orca
