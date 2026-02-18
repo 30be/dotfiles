@@ -185,6 +185,7 @@ pass
 pass-otp-git
 patchutils
 pdfgrep
+php
 pipewire
 pipewire-alsa
 pipewire-jack
