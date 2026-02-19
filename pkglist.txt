@@ -20,6 +20,7 @@ bat
 bind
 bitchat-tui
 borg
+brave-bin
 btrfs-progs
 bun
 catt
@@ -100,7 +101,6 @@ gnome-user-share
 gnome-weather
 gnu-netcat
 gnuplot
-google-chrome
 gperf
 grilo-plugins
 grim
@@ -280,7 +280,7 @@ vlc-plugins-all
 wezterm
 wf-recorder
 wget
-windscribe-beta-bin
+windscribe-cli-v2-bin
 wine
 wireless_tools
 wireplumber
