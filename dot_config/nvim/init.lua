@@ -1,12 +1,15 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
-vim.opt.number = true
+-- vim.opt.number = true
 vim.o.mouse = ""
 vim.o.showmode = false
 vim.schedule(function()
     vim.o.clipboard = "unnamedplus"
 end)
+-- vim.opt.laststatus = 3    -- Global statusline (optional, but cleaner for single bar)
+vim.opt.cmdheight = 0     -- Hide command line when not typing
+
 vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -22,6 +25,7 @@ vim.o.cursorline = true
 vim.o.scrolloff = 5
 vim.o.confirm = true
 vim.o.expandtab = true
+vim.opt.shortmess:append("I") -- no splash
 
 -- Add Mason's bin directory to PATH so vim.lsp.enable() can find the binaries
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. ":" .. vim.env.PATH
