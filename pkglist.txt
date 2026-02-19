@@ -280,6 +280,7 @@ vlc-plugins-all
 wezterm
 wf-recorder
 wget
+windscribe-beta-bin
 wine
 wireless_tools
 wireplumber
