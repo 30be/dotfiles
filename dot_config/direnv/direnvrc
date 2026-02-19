@@ -1,0 +1,7 @@
+layout_python-venv() {
+  local venv_path=".venv"
+  if [[ -d "$venv_path" ]]; then
+    export VIRTUAL_ENV=$(pwd)/$venv_path
+    export PATH=$VIRTUAL_ENV/bin:$PATH
+  fi
+}
