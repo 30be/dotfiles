@@ -169,6 +169,7 @@ nano
 nasm
 nautilus
 neovim
+neovim-remote
 network-manager-applet
 networkmanager
 nix
