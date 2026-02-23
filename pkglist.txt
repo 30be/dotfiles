@@ -8,6 +8,7 @@ android-sdk
 android-sdk-build-tools
 android-tools
 anki-bin
+antigravity
 anydesk-bin
 arduino-language-server
 at
@@ -22,11 +23,11 @@ bitchat-tui
 borg
 brave-bin
 btrfs-progs
-bun
 catt
 chezmoi
 clang
 clojure
+cmake
 code
 copyparty
 cowsay
@@ -56,6 +57,7 @@ feh
 ffuf
 firefox
 firefox-gnome-theme
+foliate
 foot
 fzf
 gdm
@@ -108,7 +110,7 @@ grok-cli
 gromit-mpx
 grub
 gst-plugin-pipewire
-gstreamer-vaapi
+gst-plugin-va
 gtk2
 gvfs
 gvfs-afc
@@ -139,9 +141,11 @@ jupyterlab
 lazygit
 lesspass
 lftp
+libgcc
 libkeybinder3
 libpulse
 libreoffice-fresh
+libstdc++
 libva-intel-driver
 linux
 linux-firmware
@@ -176,6 +180,7 @@ npm
 ntfs-3g
 nushell
 oath-toolkit
+obs-studio
 opencl-headers
 opencode
 openresolv
