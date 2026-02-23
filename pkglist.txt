@@ -63,7 +63,6 @@ fzf
 gdm
 gemini-cli
 ghcup-hs-bin
-ghostty
 gimp
 git
 github-cli
@@ -285,7 +284,6 @@ uvicorn
 vim
 vlc
 vlc-plugins-all
-wezterm
 wf-recorder
 wget
 windscribe-cli-v2-bin
