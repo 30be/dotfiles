@@ -138,6 +138,7 @@ jdk17-openjdk
 jq
 jupyter-notebook
 jupyterlab
+kitty
 lazygit
 lesspass
 lftp
@@ -275,7 +276,7 @@ tree
 ttf-comic-neue
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
-ueberzug
+ueberzugpp
 ufw
 ugene-bin
 undollar
