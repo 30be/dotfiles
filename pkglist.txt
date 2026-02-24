@@ -208,7 +208,6 @@ pymol
 pypy
 pyright
 python-biopython
-python-google-genai
 python-httplib2
 python-jupyterlab-vim
 python-jupytext
@@ -226,7 +225,6 @@ python-seaborn
 python-selenium
 python-sqlalchemy
 python-tqdm
-python-xlsx2csv
 python-yaml
 python311
 qbittorrent
