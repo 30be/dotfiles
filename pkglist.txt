@@ -26,6 +26,7 @@ btrfs-progs
 catt
 chezmoi
 clang
+claude-code
 clojure
 cmake
 code
