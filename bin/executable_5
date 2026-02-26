@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo "Timer started."
-sleep 300
-echo "Time is up."
-notify-send "Time is up." -u critical
