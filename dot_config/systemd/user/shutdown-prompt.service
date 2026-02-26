@@ -1,7 +1,0 @@
-[Unit]
-Description=Shutdown Prompt Service
-
-[Service]
-Type=oneshot
-ExecStart=/home/lyka/.local/bin/maybe-shutdown.sh
-RemainAfterExit=yes
