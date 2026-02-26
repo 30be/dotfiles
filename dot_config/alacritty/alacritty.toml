@@ -26,3 +26,7 @@ mods = "Control|Shift"
 
 [terminal.shell]
 program = "/usr/bin/bash"
+
+[window]
+decorations = "None"
+opacity = 0.95

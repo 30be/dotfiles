@@ -4,16 +4,19 @@ fi
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
-SAVEHIST=1000
 
 set -o vi
-
-alias ls='ls --color=auto'
-alias l="ls -lha"
+alias ls='ls -p --hyperlink --color=auto  --group-directories-first'
+alias l="ls -lhA"
+alias print='lp -d Samsung_SCX-3400_Series'
+alias runhs=' runhaskell --ghc-arg="-package containers" --ghc-arg="-package bytestring"'
 
 # 'gem' function translated to bash
 gem() {
-  proxychains -q gemini "$@"
+  proxychains -q gemini -m "gemini-3-pro-preview" "$@"
+}
+gem2() {
+  proxychains -q gemini -m "gemini-2.5-pro" "$@"
 }
 flash() {
   proxychains -q gemini -m "gemini-2.5-flash" "$@"
@@ -89,7 +92,11 @@ tempe() {
     cd "$1"
     chmod -R 0700 .
   fi
+  logger -t tempe "Created and entered: $(pwd)"
 }
 
 alias rm="gio trash"
 alias g=git
+alias py='python3 -c "import sys; exec(sys.stdin.read())" << EOF'
+alias idrive='/opt/IDriveForLinux/bin/idrive'
+alias sanki='systemd-run --user --scope -p MemoryMax=8G /usr/bin/anki'

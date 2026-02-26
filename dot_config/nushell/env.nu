@@ -1,5 +1,5 @@
 $env.HISTSIZE = 1000
-$env.EDITOR = "nvim"
+$env.EDITOR = "nvr --remote-wait"
 $env.TIMG_DEFAULT_TITLE = "%b (%wx%h)"
 
 $env.PATH = ($env.PATH | prepend [

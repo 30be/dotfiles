@@ -10,4 +10,5 @@ for i in {1..254}; do
 done
 
 wait
-echo "Scan finished. Check connected devices: adb devices"
+adb devices
+scrcpy

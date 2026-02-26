@@ -2,7 +2,6 @@
 
 # Set Borg repository path
 export BORG_REPO="/home/lyka/borg-repo"
-export BORG_PASSPHRASE="$(cat /home/lyka/.borg_passphrase)"
 
 # Create a new backup archive
 echo "Starting Borg backup at $(date)..."
