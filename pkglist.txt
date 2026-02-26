@@ -271,6 +271,7 @@ tmux
 totem
 traceroute
 tree
+tree-sitter-cli
 ttf-comic-neue
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
