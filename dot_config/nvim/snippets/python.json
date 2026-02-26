@@ -1,0 +1,19 @@
+{
+  "Competitive Programming Template": {
+    "prefix": "cp",
+    "body": [
+      "import sys",
+      "",
+      "input = sys.stdin.readline",
+      "",
+      "t = int(input())",
+      "",
+      "def solve():",
+      "    $0",
+      "",
+      "for _ in range(t):",
+      "    solve()"
+    ],
+    "description": "Competitive Programming Template"
+  }
+}
