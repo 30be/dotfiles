@@ -251,6 +251,7 @@ sl
 slirp4netns
 smartmontools
 snapshot
+socat
 sqlfluff
 strace
 sushi
