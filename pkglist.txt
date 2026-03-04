@@ -8,7 +8,6 @@ android-sdk
 android-sdk-build-tools
 android-tools
 anki-bin
-antigravity
 anydesk-bin
 arduino-language-server
 at
@@ -188,7 +187,6 @@ nushell
 oath-toolkit
 obs-studio
 opencl-headers
-opencode
 openresolv
 openvpn
 orca
@@ -249,7 +247,6 @@ s-nail
 samsung-unified-driver
 scrcpy
 sdkmanager
-signal-desktop
 simple-scan
 sl
 slirp4netns
