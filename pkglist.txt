@@ -295,6 +295,7 @@ windscribe-cli-v2-bin
 wine
 wireless_tools
 wireplumber
+wireshark-cli
 wl-clipboard
 wtype
 xdg-desktop-portal-gnome
