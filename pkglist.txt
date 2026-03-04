@@ -25,6 +25,7 @@ brave-bin
 btrfs-progs
 carapace-bin
 catt
+ccache
 chezmoi
 clang
 claude-code
@@ -59,6 +60,7 @@ feh
 ffuf
 firefox
 firefox-gnome-theme
+firejail
 foliate
 foot
 fzf
@@ -161,6 +163,7 @@ man-db
 man-pages
 mariadb
 mkchromecast-git
+mold
 moreutils
 mosh
 mpv
