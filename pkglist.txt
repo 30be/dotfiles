@@ -23,6 +23,7 @@ bitchat-tui
 borg
 brave-bin
 btrfs-progs
+carapace-bin
 catt
 chezmoi
 clang
@@ -304,5 +305,6 @@ yay-bin-debug
 ydotool
 yelp
 zig
+zoxide
 zram-generator
 zsh
