@@ -19,6 +19,7 @@ bash-completion
 bat
 bind
 bitchat-tui
+bluez-utils
 borg
 brave-bin
 btrfs-progs
@@ -252,6 +253,8 @@ slirp4netns
 smartmontools
 snapshot
 socat
+spotify-launcher
+spotify-player
 sqlfluff
 strace
 sushi
