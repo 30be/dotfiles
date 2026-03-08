@@ -29,6 +29,7 @@ ccache
 chezmoi
 clang
 claude-code
+claude-desktop-bin
 clojure
 cmake
 code
