@@ -6,4 +6,7 @@ $env.PATH = ($env.PATH | prepend [
     $"($env.HOME)/bin"
     $"($env.HOME)/.ghcup/bin"
     $"($env.HOME)/.local/bin"
+    "/usr/lib/ccache/bin"
 ] | uniq)
+
+# zoxide init nushell | save -f ~/.zoxide.nu

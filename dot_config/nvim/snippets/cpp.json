@@ -17,7 +17,7 @@
   },
   "Test cases while": {
     "prefix": "twhile",
-    "body": ["int t;", "cin >> t", "while (t--) {", "  $0", "}"]
+    "body": ["int t;", "cin >> t;", "while (t--) {", "  $0", "}"]
   },
   "Read all into vector": {
     "prefix": "rall",
@@ -33,6 +33,15 @@
   },
   "Print all from container": {
     "prefix": "pall",
-    "body": ["for (auto &x : ${1:a})", "  cout << x << ' ';", ""]
+    "body": ["for (auto &x : ${1:a})", "  cout << x << ' ';", "cout << '\\n'"]
+  },
+
+  "fori": {
+    "prefix": "fori",
+    "body": ["for (int i = 0; i < n; i++) {", "  $0", "}"]
+  },
+  "Spoof input": {
+    "prefix": "spoof",
+    "body": ["ifstream in(\"input.txt\");", "cin.rdbuf(in.rdbuf());"]
   }
 }

@@ -20,9 +20,12 @@ vim.o.inccommand = "split"
 vim.o.laststatus = 3
 vim.o.cursorline = true
 vim.o.scrolloff = 5
+vim.o.linebreak = true
 vim.o.confirm = true
 vim.o.expandtab = true
 vim.opt.shortmess:append("I") -- no splash
+vim.o.cmdheight = 0 -- remove the command line
+vim.o.showcmd = false -- remove the command line
 
 -- Add Mason's bin directory to PATH so vim.lsp.enable() can find the binaries
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. ":" .. vim.env.PATH
@@ -38,6 +41,9 @@ vim.opt.spell = true
 
 vim.g.python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
 local map = vim.keymap.set
+
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
@@ -61,6 +67,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
     command = "checktime", -- make nvim reload the file when claude changes it
+})
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+    desc = "Auto-save on edit",
+    callback = function()
+        if vim.bo.modified and vim.bo.buftype == "" and vim.fn.expand("%") ~= "" then
+            vim.cmd("silent write")
+        end
+    end,
 })
 vim.api.nvim_create_autocmd("TermRequest", {
     desc = "OSC 7 from Nushell → update cwd + rename terminal buffer",
@@ -206,7 +220,12 @@ local get_compile_fn = function(test_case)
     return function()
         local ft = vim.bo.filetype
         if ft == "cpp" then
-            vim.cmd("!printf \\n; cat " .. test_case .. " | ./a.out")
+            vim.cmd(
+                "!printf '\\n\\n';"
+                    .. "if not ('a.out' | path exists) or (ls a.out).modified < (ls solution.cpp).modified "
+                    .. "{clang++ -std=c++17 solution.cpp -include-pch ~/dev/cp/stdc++.h.pch -g}; "
+                    .. ("cat " .. test_case .. " | ./a.out")
+            )
         elseif ft == "python" then
             vim.cmd("!printf \\n; cat " .. test_case .. " | python % ")
         end
@@ -228,7 +247,7 @@ end
 require("lazy").setup({
     { "folke/which-key.nvim", opts = { delay = 1000 } },
     "nvim-lua/plenary.nvim", -- Needed everywhere
-    { "NMAC427/guess-indent.nvim", opts = {} },
+    { "Darazaki/indent-o-matic", opts = {} },
     { "ethanholz/nvim-lastplace", opts = {} },
     {
         "nvim-telescope/telescope.nvim",
@@ -307,6 +326,7 @@ require("lazy").setup({
                 vim.lsp.config(name, server)
                 vim.lsp.enable(name)
             end
+            vim.lsp.enable("nushell") -- not in mason, installed externally
         end,
     },
 
@@ -329,7 +349,7 @@ require("lazy").setup({
 
     {
         "saghen/blink.cmp",
-        event = "VimEnter",
+        event = "InsertEnter",
         version = "1.*",
         dependencies = {
             {
@@ -365,12 +385,20 @@ require("lazy").setup({
     { "folke/todo-comments.nvim", opts = {} },
     {
         "nvim-treesitter/nvim-treesitter",
-        lazy = false,
+        event = "BufRead",
         build = ":TSUpdate",
         -- NOTE: Dont forget to call "yay -S tree-sitter-cli"
         config = function()
             require("nvim-treesitter.config").setup({ highlight = { enable = true } })
-            require("nvim-treesitter").install({ "python", "markdown", "markdown_inline", "haskell", "sql" })
+            require("nvim-treesitter").install({
+                "python",
+                "markdown",
+                "markdown_inline",
+                "haskell",
+                "sql",
+                "nu",
+                "cpp",
+            })
             vim.api.nvim_create_autocmd("FileType", {
                 callback = function()
                     pcall(vim.treesitter.start)
@@ -386,7 +414,6 @@ require("lazy").setup({
             "nvim-tree/nvim-web-devicons",
             { "3rd/image.nvim", opts = {} },
         },
-        lazy = false,
         opts = {
             filesystem = {
                 bind_to_cwd = true,
@@ -432,7 +459,9 @@ require("lazy").setup({
                     local dap = require("dap")
                     if dap.session() then
                         dap.continue()
-                    else
+                        return
+                    end
+                    local function launch()
                         local configs = dap.configurations[vim.bo.filetype]
                         if configs and configs[1] then
                             dap.run(configs[1])
@@ -440,6 +469,13 @@ require("lazy").setup({
                             dap.continue()
                         end
                     end
+                    if vim.bo.filetype == "cpp" then
+                        vim.fn.system(
+                            "nu -c \"if not ('a.out' | path exists) or (ls a.out).modified < (ls solution.cpp).modified"
+                                .. " {clang++ -std=c++17 solution.cpp -include-pch ~/dev/cp/stdc++.h.pch -g}\""
+                        )
+                    end
+                    launch()
                 end,
                 desc = "Debug: Continue",
             },
@@ -501,11 +537,29 @@ require("lazy").setup({
                 handlers = {},
                 ensure_installed = debuggers,
             })
-            dapui.setup({})
+            dapui.setup({
+                layouts = {
+                    {
+                        elements = {
+                            { id = "watches", size = 0.4 },
+                            { id = "console", size = 0.6 },
+                        },
+                        position = "left",
+                        size = 40,
+                    },
+                },
+            })
+            dap.configurations.cpp = {
+                {
+                    name = "Launch a.out",
+                    type = "codelldb",
+                    request = "launch",
+                    program = "${workspaceFolder}/a.out",
+                    cwd = "${workspaceFolder}",
+                    stdio = { "${workspaceFolder}/in1", nil, nil },
+                },
+            }
             dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-            dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-            dap.listeners.before.event_exited["dapui_config"] = dapui.close
-            -- Define high-visibility colors
             vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#e06c75", bg = "NONE" }) -- Red
             vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#61afef", bg = "NONE" }) -- Blue
             vim.api.nvim_set_hl(0, "DapStopped", { fg = "#98c379", bg = "NONE" }) -- Green
@@ -524,6 +578,34 @@ require("lazy").setup({
             -- Setup python debugger
             local python_path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
             require("dap-python").setup(python_path)
+            dap.configurations.python = {
+                {
+                    name = "Launch file with in1",
+                    type = "debugpy",
+                    request = "launch",
+                    program = "${file}",
+                    cwd = "${workspaceFolder}",
+                    redirectOutput = true,
+                    console = "integratedTerminal",
+                    args = {},
+                    pythonPath = python_path,
+                },
+            }
+            -- Redirect stdin from in1 for python
+            dap.listeners.after.event_initialized["python_stdin"] = function(session)
+                if session.config.type == "debugpy" then
+                    local stdin_file = vim.fn.getcwd() .. "/in1"
+                    if vim.fn.filereadable(stdin_file) == 1 then
+                        session:request("evaluate", {
+                            expression = string.format(
+                                "import sys; sys.stdin = open('%s')",
+                                stdin_file
+                            ),
+                            context = "repl",
+                        })
+                    end
+                end
+            end
         end,
     },
     { -- Make Esc work in claude code
@@ -533,6 +615,7 @@ require("lazy").setup({
 
     {
         "coder/claudecode.nvim",
+        -- enabled = false,
         dependencies = { "folke/snacks.nvim" },
         opts = {
             diff_opts = {
@@ -568,8 +651,13 @@ require("lazy").setup({
                 ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
             },
             { "<M-s>", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-            { "<M-y>", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-            { "<M-r>", "<cmd>ClaudeCodeDiffDeny<cr><cmd>ClaudeCodeFocus<cr>", desc = "Reject diff" },
+            { "<M-y>", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff", mode = { "i", "n" } },
+            {
+                "<M-r>",
+                "<cmd>ClaudeCodeDiffDeny<cr><cmd>ClaudeCodeFocus<cr>",
+                desc = "Reject diff",
+                mode = { "i", "n" },
+            },
         },
     },
     {
@@ -583,40 +671,66 @@ require("lazy").setup({
     },
 
     { "jghauser/follow-md-links.nvim" }, -- follow links on enter
-    { "catgoose/nvim-colorizer.lua", event = "BufReadPre", opts = {} },
-    { "nvim-lualine/lualine.nvim", dependencies = "nvim-tree/nvim-web-devicons", opts = {} },
-    { "nvim-mini/mini.cursorword", version = "*", opts = {} }, -- underline the word under cursor
-    { "Weissle/persistent-breakpoints.nvim", opts = { load_breakpoints_event = { "BufReadPost" } } },
-
     {
-        "3rd/image.nvim",
+        "catgoose/nvim-colorizer.lua",
+        event = "BufReadPre",
         opts = {
-            window = {
-                mappings = {
-                    ["P"] = {
-                        "toggle_preview",
-                        config = {
-                            use_float = false,
-                            use_image_nvim = true,
-                            -- use_snacks_image = true,
-                            -- title = 'Neo-tree Preview',
-                        },
-                    },
+            filetypes = { "css", "html", "tsx", "jsx" },
+            options = {
+                parsers = {
+                    tailwind = { enable = true, lsp = true, update_names = true },
                 },
             },
         },
     },
+    { "nvim-lualine/lualine.nvim", dependencies = "nvim-tree/nvim-web-devicons", opts = {} },
+    { "Weissle/persistent-breakpoints.nvim", opts = { load_breakpoints_event = { "BufReadPost" } } },
+    {
+        "30be/zehntage",
+        opts = {},
+        ft = { "markdown", "text", "claude-code" },
+        keys = {
+            { "K", "<cmd>ZehnTage<CR>", desc = "ZehnTage add word" },
+            { "<leader>zc", "<cmd>ZehnTageClear<CR>", desc = "ZehnTage clear word" },
+            { "K", "<cmd>'<,'>ZehnTageTranslate<CR>", desc = "ZehnTage translate selection", mode = "v" },
+            { "<leader>zn", ":ZehnTageNote ", desc = "ZehnTage note" },
+        },
+    },
+
     {
         "romgrk/barbar.nvim",
         dependencies = { "lewis6991/gitsigns.nvim", "nvim-tree/nvim-web-devicons" },
+        event = "BufAdd",
         opts = { auto_hide = true },
     },
+    { "mbbill/undotree", keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" } } },
     { "chentoast/marks.nvim", event = "VimEnter", opts = {} },
+    { "kdheepak/lazygit.nvim", keys = { { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" } } },
+
     {
-        "michaelb/sniprun",
-        build = "sh install.sh",
-        opts = {},
-        keys = { { "<leader>r", ":SnipRun<cr>", mode = { "v", "n" }, desc = "Run snippet" } },
+        "folke/zen-mode.nvim",
+        opts = {
+            window = {
+                width = 80, -- width of the Zen window
+                options = {
+                    number = false, -- disable number column
+                    relativenumber = false, -- disable relative numbers
+                    cursorline = false, -- disable cursorline
+                    cursorcolumn = false, -- disable cursor column
+                    foldcolumn = "0", -- disable fold column
+                    list = false, -- disable whitespace characters
+                    spell = false, -- disable spelling
+                    scrolloff = 999, -- make the cursor centered
+                    cmdheight = 0, -- remove the command line
+                    showcmd = false, -- remove the command line
+                    laststatus = 0, -- remove the status line
+                    ruler = false, -- disables the ruler text in the cmd line area
+                },
+            },
+        },
+        keys = {
+            { "<leader>zm", "<cmd>ZenMode<CR>", desc = "Zen Mode" },
+        },
     },
 }, {
     ui = {},

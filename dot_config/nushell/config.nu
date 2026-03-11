@@ -18,7 +18,7 @@ alias vimdiff = nvim -d
 alias idrive = /opt/IDriveForLinux/bin/idrive
 alias l = ls -a
 alias ils = timg --grid=3x1 --upscale=i --center --title -bgray -Bdarkgray
-# alias print = lp -d Samsung_SCX-3400_Series
+alias printit = lp -d Samsung_SCX-3400_Series
 alias runhs = runhaskell --ghc-arg="-package containers" --ghc-arg="-package bytestring"
 
 # Functions
@@ -79,9 +79,32 @@ $env.config.shell_integration = {
     osc2: true,
     osc8: true,
 }
+$env.config.use_kitty_protocol = true
 
 plugin use query
-plugin use polars
+# plugin use polars
 plugin use highlight
 plugin use image
 load-env (open ~/.env | parse "{key}={value}" | transpose -rd)
+
+# Carapace external completer
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
+
+let carapace_completer = {|spans: list<string>|
+    let expanded_alias = (scope aliases | where name == $spans.0 | get -o 0.expansion)
+    let spans = if $expanded_alias != null {
+        $spans | skip 1 | prepend ($expanded_alias | split row ' ' | take 1)
+    } else {
+        $spans
+    }
+    carapace $spans.0 nushell ...$spans | from json
+}
+
+$env.config.completions.external = {
+    enable: true
+    completer: $carapace_completer
+}
+
+
+$env.config.hooks.command_not_found = {|cmd| try { pkgfile $cmd } catch { null } }
+source ~/.zoxide.nu

@@ -1,11 +1,18 @@
 {
-  "enabledPlugins": {
-    "lua-lsp@claude-plugins-official": true,
-    "clangd-lsp@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(which cc:*)",
+      "Bash(head:*)",
+      "Bash(nvim:*)",
+      "Bash(cd /tmp && git clone --depth 1 https://github.com/tree-sitter/tree-sitter-haskell.git 2>&1)",
+      "WebSearch",
+      "WebFetch(domain:github.com)"
+    ],
+    "defaultMode": "default",
+    "additionalDirectories": [
+      "~/.config/nvim/"
+    ]
   },
   "hooks": {
     "Notification": [
@@ -19,5 +26,26 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "knowledge-work-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/knowledge-work-plugins"
+      }
+    }
+  },
+  "effortLevel": "low"
 }
