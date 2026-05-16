@@ -20,6 +20,7 @@ alias l = ls -a
 alias ils = timg --grid=3x1 --upscale=i --center --title -bgray -Bdarkgray
 alias printit = lp -d Samsung_SCX-3400_Series
 alias runhs = runhaskell --ghc-arg="-package containers" --ghc-arg="-package bytestring"
+alias yay = paru
 
 # Functions
 def gem [...args] { gemini -m "gemini-3-pro-preview" ...$args }
@@ -83,8 +84,8 @@ $env.config.use_kitty_protocol = true
 
 plugin use query
 # plugin use polars
-plugin use highlight
-plugin use image
+# plugin use highlight
+# plugin use image
 load-env (open ~/.env | parse "{key}={value}" | transpose -rd)
 
 # Carapace external completer

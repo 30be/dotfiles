@@ -1,11 +1,24 @@
+-- Load ~/.env into vim.env
+local env_path = vim.fn.expand("~/.env")
+if vim.fn.filereadable(env_path) == 1 then
+    for _, line in ipairs(vim.fn.readfile(env_path)) do
+        local key, val = line:match("^([%w_]+)=(.*)")
+        if key then
+            vim.env[key] = val
+        end
+    end
+end
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
 vim.opt.number = true
 vim.o.showmode = false
 vim.schedule(function()
     vim.o.clipboard = "unnamedplus"
 end)
 
+vim.o.shell = "/usr/bin/nu"
 vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -23,7 +36,7 @@ vim.o.scrolloff = 5
 vim.o.linebreak = true
 vim.o.confirm = true
 vim.o.expandtab = true
-vim.opt.shortmess:append("I") -- no splash
+vim.opt.shortmess:append("I")
 vim.o.cmdheight = 0 -- remove the command line
 vim.o.showcmd = false -- remove the command line
 
@@ -35,7 +48,8 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 
 vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,"
-    .. "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+    .. "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz,"
+    .. "Ё;~,б;\\,,ю;.,ж;\\;,э;',х;[,ъ;]"
 vim.opt.spelllang = "en_us,ru_ru,de_de"
 vim.opt.spell = true
 
@@ -49,10 +63,10 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 map("t", "<C-t>", "<Esc>", { desc = "Actually send esc to the terminal" })
-map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map({ "n", "v" }, "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map({ "n", "v" }, "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map({ "n", "v" }, "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map({ "n", "v" }, "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
@@ -68,6 +82,33 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
     command = "checktime", -- make nvim reload the file when claude changes it
 })
+vim.api.nvim_create_autocmd("TermOpen", {
+    desc = "Hide Claude terminal from buffer list + auto-scroll",
+    callback = function(args)
+        local buf = args.buf
+        local name = vim.api.nvim_buf_get_name(buf)
+        if name:find("claude") then
+            vim.bo[buf].buflisted = false
+        end
+        vim.api.nvim_buf_attach(buf, false, {
+            on_lines = function()
+                if not vim.api.nvim_buf_is_valid(buf) then return true end
+                vim.schedule(function()
+                    for _, win in ipairs(vim.api.nvim_list_wins()) do
+                        if vim.api.nvim_win_is_valid(win) and vim.api.nvim_win_get_buf(win) == buf then
+                            local count = vim.api.nvim_buf_line_count(buf)
+                            local cursor = vim.api.nvim_win_get_cursor(win)
+                            -- Only auto-scroll if cursor is near the bottom
+                            if count - cursor[1] < 50 then
+                                pcall(vim.api.nvim_win_set_cursor, win, { count, 0 })
+                            end
+                        end
+                    end
+                end)
+            end,
+        })
+    end,
+})
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
     desc = "Auto-save on edit",
     callback = function()
@@ -76,6 +117,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
         end
     end,
 })
+
 vim.api.nvim_create_autocmd("TermRequest", {
     desc = "OSC 7 from Nushell → update cwd + rename terminal buffer",
     callback = function(ev)
@@ -90,9 +132,9 @@ vim.api.nvim_create_autocmd("TermRequest", {
                 vim.cmd.lcd(dir)
             end
 
-            -- 2. Nice buffer name (this is the part you asked for)
+            -- 2. Nice buffer name
             local nice_path = vim.fn.fnamemodify(dir, ":~") -- ~/projects/foo
-            local new_name = "term://" .. nice_path
+            local new_name = "TERM"
 
             -- Safe rename (in case two terminals land on same cwd)
             pcall(vim.api.nvim_buf_set_name, ev.buf, new_name)
@@ -184,13 +226,15 @@ local servers = {
     pyright = {},
     rust_analyzer = {},
     ts_ls = {},
+    tailwindcss = {},
     html = {},
     jsonls = {},
     taplo = {},
     yamlls = {},
     bashls = {},
     lemminx = {},
-    hls = {},
+    rust = {},
+    -- hls = {}, - another time
     lua_ls = { settings = { Lua = { workspace = { library = { vim.env.VIMRUNTIME } } } } },
 }
 local formatters = {
@@ -228,6 +272,8 @@ local get_compile_fn = function(test_case)
             )
         elseif ft == "python" then
             vim.cmd("!printf \\n; cat " .. test_case .. " | python % ")
+        elseif ft == "rust" then
+            vim.cmd("!cargo run ")
         end
     end
 end
@@ -245,6 +291,12 @@ end
 
 -- Only plugins ahead
 require("lazy").setup({
+    {
+        "Wansmer/langmapper.nvim",
+        lazy = false,
+        priority = 1,
+        opts = {},
+    },
     { "folke/which-key.nvim", opts = { delay = 1000 } },
     "nvim-lua/plenary.nvim", -- Needed everywhere
     { "Darazaki/indent-o-matic", opts = {} },
@@ -290,6 +342,7 @@ require("lazy").setup({
                         mode = mode or "n"
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
                     end
+                    map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
                     map("gr", vim.lsp.buf.rename, "[R]ename")
                     map("ga", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
                     map("K", function()
@@ -412,7 +465,7 @@ require("lazy").setup({
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             "nvim-tree/nvim-web-devicons",
-            { "3rd/image.nvim", opts = {} },
+            -- { "3rd/image.nvim"; opts = {}},
         },
         opts = {
             filesystem = {
@@ -472,7 +525,7 @@ require("lazy").setup({
                     if vim.bo.filetype == "cpp" then
                         vim.fn.system(
                             "nu -c \"if not ('a.out' | path exists) or (ls a.out).modified < (ls solution.cpp).modified"
-                                .. " {clang++ -std=c++17 solution.cpp -include-pch ~/dev/cp/stdc++.h.pch -g}\""
+                                .. ' {clang++ -std=c++17 solution.cpp -include-pch ~/dev/cp/stdc++.h.pch -g}"'
                         )
                     end
                     launch()
@@ -597,10 +650,7 @@ require("lazy").setup({
                     local stdin_file = vim.fn.getcwd() .. "/in1"
                     if vim.fn.filereadable(stdin_file) == 1 then
                         session:request("evaluate", {
-                            expression = string.format(
-                                "import sys; sys.stdin = open('%s')",
-                                stdin_file
-                            ),
+                            expression = string.format("import sys; sys.stdin = open('%s')", stdin_file),
                             context = "repl",
                         })
                     end
@@ -618,38 +668,26 @@ require("lazy").setup({
         -- enabled = false,
         dependencies = { "folke/snacks.nvim" },
         opts = {
+            terminal_cmd = "claude --allow-dangerously-skip-permissions",
+            focus_after_send = true,
             diff_opts = {
                 open_in_new_tab = true,
+                hide_terminal_in_new_tab = true,
+            },
+            terminal = {
+                show_native_term_exit_tip = false,
+                split_width_percentage = 0.40,
+                provider = "native",
             },
         },
         keys = {
-            { -- Jiggle to fix wrong cursor position
+            {
                 "<M-a>",
-                function()
-                    vim.cmd("ClaudeCode")
-                    vim.defer_fn(function()
-                        local win = vim.api.nvim_get_current_win()
-                        local h = vim.api.nvim_win_get_height(win)
-                        if h >= 2 then
-                            vim.api.nvim_win_set_height(win, h - 1)
-                            vim.defer_fn(function()
-                                if vim.api.nvim_win_is_valid(win) then
-                                    vim.api.nvim_win_set_height(win, h)
-                                end
-                            end, 10)
-                        end
-                    end, 30)
-                end,
+                "<cmd>ClaudeCode<cr>",
                 mode = { "v", "n", "t" },
                 desc = "Toggle Claude",
             },
-            { "<M-s>", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-            {
-                "<M-s>",
-                "<cmd>ClaudeCodeTreeAdd<cr>",
-                desc = "Add file",
-                ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
-            },
+            { "<M-s>", "V<cmd>ClaudeCodeSend<cr>", desc = "Send the current line" },
             { "<M-s>", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
             { "<M-y>", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff", mode = { "i", "n" } },
             {
