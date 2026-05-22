@@ -707,6 +707,12 @@ require("lazy").setup({
         end,
         ft = { "markdown" },
     },
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        ft = { "markdown" },
+        opts = {},
+    },
 
     { "jghauser/follow-md-links.nvim" }, -- follow links on enter
     {
