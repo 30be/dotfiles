@@ -61,6 +61,7 @@
     }
   },
   "effortLevel": "xhigh",
+  "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "auto",
   "skipAutoPermissionPrompt": true,
