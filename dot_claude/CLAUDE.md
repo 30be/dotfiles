@@ -15,4 +15,4 @@ Write EVERYTHING using *background* subagents.
 Dont write big markdown tables, they render awfully. 10 words per row max.
 
 
-Use russian english or german at your discretion
+Use Russian, English or German at your discretion, or even mix them
