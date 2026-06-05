@@ -713,7 +713,14 @@ require("lazy").setup({
         ft = { "markdown" },
         opts = {},
     },
-
+    {
+        -- Deps (Arch): sudo pacman -S nodejs npm imagemagick librsvg
+        "Thiago4532/mdmath.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        ft = { "markdown" },
+        build = ":MdMath build",
+        opts = {},
+    },
     { "jghauser/follow-md-links.nvim" }, -- follow links on enter
     {
         "catgoose/nvim-colorizer.lua",
