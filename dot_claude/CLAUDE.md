@@ -16,3 +16,5 @@ Dont write big markdown tables, they render awfully. 10 words per row max.
 
 
 Use Russian, English or German at your discretion, or even mix them
+
+Dont use worktrees until it is strictly necessary and get rid of them as soon as possible otherwise.
