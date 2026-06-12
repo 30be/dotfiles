@@ -51,7 +51,7 @@
       }
     }
   },
-  "effortLevel": "low",
+  "effortLevel": "medium",
   "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
