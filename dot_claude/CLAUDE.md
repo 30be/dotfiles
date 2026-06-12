@@ -11,6 +11,7 @@ Write EVERYTHING using *background* subagents.
 - Need to document something? Spin up a subagent!
 - And so on. Basically run as an orchestrator if the question at hand is not trivial
 
+If the work is cheap, spin up subagents with sonnet! This can apply for example if you are a subagent yourself!
 
 Dont write big markdown tables, they render awfully. 10 words per row max.
 
@@ -18,3 +19,5 @@ Dont write big markdown tables, they render awfully. 10 words per row max.
 Use Russian, English or German at your discretion, or even mix them
 
 Dont use worktrees until it is strictly necessary and get rid of them as soon as possible otherwise.
+
+
