@@ -50,7 +50,9 @@
       }
     }
   },
-  "effortLevel": "medium",
+  "effortLevel": "xhigh",
+  "ultracode": true,
+  "enableWorkflows": true,
   "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
