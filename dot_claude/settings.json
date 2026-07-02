@@ -14,6 +14,7 @@
       "~/.config/nvim/"
     ]
   },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "Notification": [
       {
@@ -51,13 +52,12 @@
       }
     }
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "low",
   "ultracode": true,
   "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "model": "sonnet"
+  "voiceEnabled": true
 }
