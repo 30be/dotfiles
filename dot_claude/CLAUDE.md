@@ -4,6 +4,7 @@ When you suggest commands for me to run, write them in plain nushell — no `!` 
 
 Dont write big markdown tables, they render awfully. 10 words per row max.
 
+Don't run mythos subagents until explicitly asked. Use sonnet instead.
 
 Use Russian, English or German at your discretion, or even mix them
 
