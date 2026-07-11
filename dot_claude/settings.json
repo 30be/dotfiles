@@ -14,7 +14,7 @@
       "~/.config/nvim/"
     ]
   },
-  "model": "fable",
+  "model": "sonnet",
   "hooks": {
     "Notification": [
       {
