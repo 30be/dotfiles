@@ -14,7 +14,7 @@
       "~/.config/nvim/"
     ]
   },
-  "model": "fable",
+  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
