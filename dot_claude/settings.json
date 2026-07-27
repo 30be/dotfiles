@@ -59,5 +59,7 @@
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "disableRemoteControl": true,
+  "remoteControlAtStartup": false
 }
