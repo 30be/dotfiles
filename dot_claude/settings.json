@@ -28,6 +28,7 @@
       }
     ]
   },
+  "disableRemoteControl": true,
   "enableWorkflows": true,
   "statusLine": {
     "type": "command",
@@ -54,12 +55,11 @@
   },
   "effortLevel": "medium",
   "ultracode": true,
-  "tui": "default",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
+  "remoteControlAtStartup": false,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "disableRemoteControl": true,
-  "remoteControlAtStartup": false
+  "voiceEnabled": true
 }
