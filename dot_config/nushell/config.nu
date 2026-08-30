@@ -21,6 +21,9 @@ alias ils = timg --grid=3x1 --upscale=i --center --title -bgray -Bdarkgray
 alias printit = lp -d Samsung_SCX-3400_Series
 alias runhs = runhaskell --ghc-arg="-package containers" --ghc-arg="-package bytestring"
 alias yay = paru
+def td [] {
+    nvim $"/home/lyka/d/d/(date now | format date "%Y-%m-%d").md"
+}
 
 # Functions
 def gem [...args] { gemini -m "gemini-3-pro-preview" ...$args }
