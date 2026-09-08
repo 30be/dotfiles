@@ -92,7 +92,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
         end
         vim.api.nvim_buf_attach(buf, false, {
             on_lines = function()
-                if not vim.api.nvim_buf_is_valid(buf) then return true end
+                if not vim.api.nvim_buf_is_valid(buf) then
+                    return true
+                end
                 vim.schedule(function()
                     for _, win in ipairs(vim.api.nvim_list_wins()) do
                         if vim.api.nvim_win_is_valid(win) and vim.api.nvim_win_get_buf(win) == buf then
@@ -234,6 +236,7 @@ local servers = {
     bashls = {},
     lemminx = {},
     rust = {},
+    jdtls = {},
     -- hls = {}, - another time
     lua_ls = { settings = { Lua = { workspace = { library = { vim.env.VIMRUNTIME } } } } },
 }
@@ -247,6 +250,7 @@ local formatters = {
     html = { "prettierd" },
     json = { "prettierd" },
     yaml = { "prettierd" },
+    java = { "google-java-format" },
     markdown = { "prettierd" },
     sh = { "shfmt" },
     bash = { "shfmt" },
@@ -274,6 +278,8 @@ local get_compile_fn = function(test_case)
             vim.cmd("!printf \\n; cat " .. test_case .. " | python % ")
         elseif ft == "rust" then
             vim.cmd("!cargo run ")
+        elseif ft == "java" then
+            vim.cmd("!printf \\n; cat " .. test_case .. " | java % ")
         end
     end
 end
