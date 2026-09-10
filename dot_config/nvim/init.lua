@@ -279,7 +279,7 @@ local get_compile_fn = function(test_case)
         elseif ft == "rust" then
             vim.cmd("!cargo run ")
         elseif ft == "java" then
-            vim.cmd("!printf \\n; cat " .. test_case .. " | java % ")
+            vim.cmd("!printf \\n; cat " .. test_case .. " | java % ...(open args | split words)")
         end
     end
 end
