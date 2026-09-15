@@ -14,7 +14,7 @@
       "~/.config/nvim/"
     ]
   },
-  "model": "fable",
+  "model": "sonnet",
   "hooks": {
     "Notification": [
       {
@@ -54,6 +54,11 @@
     }
   },
   "effortLevel": "medium",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "low"
+    }
+  },
   "ultracode": true,
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
