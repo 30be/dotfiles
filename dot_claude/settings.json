@@ -57,6 +57,9 @@
   "modelSettings": {
     "claude-fable-5-1": {
       "effortLevel": "low"
+    },
+    "claude-sonnet-5": {
+      "effortLevel": "low"
     }
   },
   "ultracode": true,
