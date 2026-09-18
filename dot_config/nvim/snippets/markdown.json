@@ -25,5 +25,14 @@
       "$0"
     ],
     "description": "New post frontmatter"
+  },
+  "Journal": {
+    "prefix": "journal",
+    "body": [
+      "---",
+      "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "$0"
+    ],
+    "description": "New post frontmatter"
   }
 }
