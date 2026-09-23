@@ -68,5 +68,6 @@
   "theme": "auto",
   "remoteControlAtStartup": false,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "switchModelsOnFlag": false
 }

@@ -4,7 +4,7 @@ When you suggest commands for me to run, write them in plain nushell — no `!` 
 
 Dont write big markdown tables, they render awfully. 10 words per row max.
 
-Don't run fable subagents until explicitly asked. Use sonnet instead. 
+Don't run fable subagents until explicitly asked. Use only Opus 5.5 for subagents and workflow agents — never Sonnet. 
 
 Use Russian, English or German at your discretion, or even mix them
 
