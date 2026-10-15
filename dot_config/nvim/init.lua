@@ -744,6 +744,7 @@ require("lazy").setup({
     { "Weissle/persistent-breakpoints.nvim", opts = { load_breakpoints_event = { "BufReadPost" } } },
     {
         "30be/zehntage",
+        dir = "~/dev/zehntage", -- local checkout: Haiku + Opus stack
         opts = {},
         ft = { "markdown", "text", "claude-code" },
         keys = {
@@ -751,6 +752,7 @@ require("lazy").setup({
             { "<leader>zc", "<cmd>ZehnTageClear<CR>", desc = "ZehnTage clear word" },
             { "K", "<cmd>'<,'>ZehnTageTranslate<CR>", desc = "ZehnTage translate selection", mode = "v" },
             { "<leader>zn", ":ZehnTageNote ", desc = "ZehnTage note" },
+            { "<leader>zo", "<cmd>ZehnTageOpus<CR>", desc = "ZehnTage ask Opus", mode = { "n", "v" } },
         },
     },
 
