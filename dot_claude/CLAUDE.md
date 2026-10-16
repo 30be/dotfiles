@@ -16,3 +16,6 @@ Dont make claude routines
 
 
 When calling some commands like some obscure ffmpeg conversion or even bash, please explain what are you doing and why - because I want to learn.
+
+
+DONT MENTION CLAUDE IN ANY OF YOUR RESULTS, no co-authored by claude or similar shit
