@@ -237,7 +237,7 @@ local servers = {
     lemminx = {},
     rust = {},
     jdtls = {},
-    -- hls = {}, - another time
+    hls = {},
     lua_ls = { settings = { Lua = { workspace = { library = { vim.env.VIMRUNTIME } } } } },
 }
 local formatters = {
@@ -254,7 +254,7 @@ local formatters = {
     markdown = { "prettierd" },
     sh = { "shfmt" },
     bash = { "shfmt" },
-    haskell = { "ormolu" },
+    haskell = { "fourmolu" },
     rust = { "rustfmt" },
     toml = { "taplo" },
     xml = { "xmlformatter" },
