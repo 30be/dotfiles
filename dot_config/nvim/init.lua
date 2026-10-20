@@ -1,5 +1,6 @@
 -- Load ~/.env into vim.env
 local env_path = vim.fn.expand("~/.env")
+
 if vim.fn.filereadable(env_path) == 1 then
     for _, line in ipairs(vim.fn.readfile(env_path)) do
         local key, val = line:match("^([%w_]+)=(.*)")
@@ -40,8 +41,7 @@ vim.opt.shortmess:append("I")
 vim.o.cmdheight = 0 -- remove the command line
 vim.o.showcmd = false -- remove the command line
 
--- Add Mason's bin directory to PATH so vim.lsp.enable() can find the binaries
-vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. ":" .. vim.env.PATH
+vim.env.PATH = vim.fn.expand("~/.ghcup/bin") .. ":" .. vim.fn.stdpath("data") .. "/mason/bin" .. ":" .. vim.env.PATH
 
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
@@ -170,11 +170,22 @@ map("n", "Z", function()
     vim.cmd("wincmd =") -- rebalance so Neo-tree stays fixed
 end, { desc = "Smart close buffer" })
 
-map("n", "yag", function()
+
+map("o", "ag", function()
     local view = vim.fn.winsaveview()
-    vim.cmd("keepjumps normal! ggyG")
-    vim.fn.winrestview(view)
-end, { desc = "Yank entire buffer" })
+    vim.schedule(function()
+        vim.fn.winrestview(view)
+    end)
+    vim.cmd("keepjumps normal! ggVG")
+end, { desc = "Entire buffer" })
+
+-- map("x", "ag", "<cmd>keepjumps normal! ggVG<CR>", { desc = "Entire buffer" })
+
+-- map("n", "yag", function()
+--     local view = vim.fn.winsaveview()
+--     vim.cmd("keepjumps normal! ggyG")
+--     vim.fn.winrestview(view)
+-- end, { desc = "Yank entire buffer" })
 
 local status_group = vim.api.nvim_create_augroup("TerminalStatusHide", { clear = true })
 
@@ -235,7 +246,6 @@ local servers = {
     yamlls = {},
     bashls = {},
     lemminx = {},
-    rust = {},
     jdtls = {},
     hls = {},
     lua_ls = { settings = { Lua = { workspace = { library = { vim.env.VIMRUNTIME } } } } },
@@ -254,9 +264,9 @@ local formatters = {
     markdown = { "prettierd" },
     sh = { "shfmt" },
     bash = { "shfmt" },
-    haskell = { "fourmolu" },
     rust = { "rustfmt" },
     toml = { "taplo" },
+    haskell = { "fourmolu" },
     xml = { "xmlformatter" },
     sql = { "sql_formatter" },
 }
@@ -270,9 +280,9 @@ local get_compile_fn = function(test_case)
         if ft == "cpp" then
             vim.cmd(
                 "!printf '\\n\\n';"
-                    .. "if not ('a.out' | path exists) or (ls a.out).modified < (ls solution.cpp).modified "
-                    .. "{clang++ -std=c++17 solution.cpp -include-pch ~/dev/cp/stdc++.h.pch -g}; "
-                    .. ("cat " .. test_case .. " | ./a.out")
+                .. "if not ('a.out' | path exists) or (ls a.out).modified < (ls solution.cpp).modified "
+                .. "{clang++ -std=c++17 solution.cpp -include-pch ~/dev/cp/stdc++.h.pch -g}; "
+                .. ("cat " .. test_case .. " | ./a.out")
             )
         elseif ft == "python" then
             vim.cmd("!printf \\n; cat " .. test_case .. " | python % ")
@@ -280,6 +290,8 @@ local get_compile_fn = function(test_case)
             vim.cmd("!cargo run ")
         elseif ft == "java" then
             vim.cmd("!printf \\n; cat " .. test_case .. " | java % ...(open args | split words)")
+        elseif ft == "haskell" then
+            vim.cmd("!printf \\n; cat " .. test_case .. " | cabal run")
         end
     end
 end
@@ -349,8 +361,6 @@ require("lazy").setup({
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
                     end
                     map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-                    map("gr", vim.lsp.buf.rename, "[R]ename")
-                    map("ga", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
                     map("K", function()
                         vim.lsp.buf.hover({ border = "rounded" })
                     end, "Hover Documentation")
@@ -360,8 +370,12 @@ require("lazy").setup({
             local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             -- LSPs: Auto-install using mason-lspconfig (handles name mapping)
+            local not_from_mason = { hls = true }
+
             require("mason-lspconfig").setup({
-                ensure_installed = vim.tbl_keys(servers or {}),
+                ensure_installed = vim.tbl_filter(function(n)
+                    return not not_from_mason[n]
+                end, vim.tbl_keys(servers)),
             })
 
             local ensure_installed = {}
@@ -531,7 +545,7 @@ require("lazy").setup({
                     if vim.bo.filetype == "cpp" then
                         vim.fn.system(
                             "nu -c \"if not ('a.out' | path exists) or (ls a.out).modified < (ls solution.cpp).modified"
-                                .. ' {clang++ -std=c++17 solution.cpp -include-pch ~/dev/cp/stdc++.h.pch -g}"'
+                            .. ' {clang++ -std=c++17 solution.cpp -include-pch ~/dev/cp/stdc++.h.pch -g}"'
                         )
                     end
                     launch()
