@@ -467,6 +467,8 @@ end, { desc = "Entire buffer" })
                     "python",
                     "markdown",
                     "markdown_inline",
+                    "yaml",
+                    "bash",
                     "haskell",
                     "sql",
                     "nu",
