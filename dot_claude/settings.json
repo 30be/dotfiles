@@ -69,7 +69,6 @@
   "switchModelsOnFlag": false,
   "remoteControlAtStartup": false,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
   "autoMode": {
     "environment": [
       "### Org-wide",
@@ -97,5 +96,6 @@
       "**Trusted repo**: /home/lyka/dev/zehntage-gnome, origin github.com/30be/zehntage-gnome (public — only this repo's own work belongs here; content ported from other repos is not its own work)",
       "**Org-specific CLIs**: None configured — user-specific tools observed: nushell (preferred shell, plain nushell syntax, no bash idioms), gnome-extensions, dconf, gsettings, pacman/paru/yay/makepkg (Arch packaging), chezmoi (dotfiles)"
     ]
-  }
+  },
+  "voiceEnabled": true
 }
